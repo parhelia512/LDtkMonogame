@@ -5,8 +5,6 @@ LDtk Monogame is a [LDtk](https://ldtk.io) project loader and renderer for the [
 This is the documentation page for all LDtkMonogame related stuff  
 If you are looking for ldtk documentation thats [here](https://ldtk.io/)
 
-This wiki is still under contruction so alot of documentation and guides are still missing  
-
 ## Preview
 
 ![LDtk to Monogame Conversion](~/art/screenshots/LDtk%20to%20Monogame.png "1 to 1 Conversion")
