@@ -76,18 +76,43 @@
 <h1 id="quick-start-guide">Quick Start Guide</h1>
 
 <p>The easiest way to start using LDtkMonogame is to import it into the project using</p>
-<p><a href="https://www.nuget.org/packages/LDtkMonogame/"><img src="https://img.shields.io/nuget/v/LDtkMonogame?"></a></p>
+<table>
+<thead>
+<tr>
+<th>Package name</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LDtkMonogame</td>
+<td><a href="https://www.nuget.org/packages/LDtkMonogame/"><img src="https://buildstats.info/nuget/LDtkMonogame" alt="LDtkMonogame"></a></td>
+</tr>
+<tr>
+<td>LDtkMonogame.Codegen</td>
+<td><a href="https://www.nuget.org/packages/LDtkMonogame.Codegen/"><img src="https://buildstats.info/nuget/LDtkMonogame.Codegen" alt="LDtkMonogame.Codegen"> </a></td>
+</tr>
+<tr>
+<td>LDtkMonogame.ContentPipeline</td>
+<td><a href="https://www.nuget.org/packages/LDtkMonogame.ContentPipeline/"><img src="https://buildstats.info/nuget/LDtkMonogame.ContentPipeline" alt="LDtkMonogame.ContentPipeline"> </a></td>
+</tr>
+</tbody>
+</table>
 <p>Make sure to import the namespace at the top</p>
 <pre><code class="lang-csharp">using LDtk;
+using LDtk.Renderer; // Optional
 </code></pre>
-<p>To get started loading ldtk files create a</p>
-<pre><code class="lang-csharp">World world = new World(spriteBatch,&quot;Assets/MyProject.ldtk&quot;);
+<p>LDtk.Renderer is a premade renderer for the levels you can create your own if you have more specific needs
+<a href="https://github.com/IrishBruse/LDtkMonogame/blob/a1ddd544b3a89db1283faacc63968342ab26f2aa/LDtk/Renderer/LDtkRenderer.cs">LDtkRenderer.cs</a> is an example of how to make one.</p>
+<p>To get started loading ldtk files load a world in <code>Initialize</code>.</p>
+<pre><code class="lang-csharp">World world = LDtkWorld.LoadWorld(&quot;World&quot;, Content);
+or
+World world = LDtkWorld.LoadWorld(&quot;Data/World.ldtk&quot;);
 </code></pre>
-<p>Now to load the level</p>
-<pre><code class="lang-csharp">Level startLevel = world.GetLevel(&quot;Level1&quot;);
-</code></pre>
-<p>Now to load the entities</p>
-<pre><code class="lang-csharp">Entity[] diamonds = startLevel.GetEntities&lt;Entity&gt;(&quot;Diamond&quot;);
+<p>Create the renderer.</p>
+<pre><code class="lang-csharp">LDtkRenderer renderer = new LDtkRenderer(spriteBatch, Content);
+or
+LDtkRenderer renderer = new LDtkRenderer(spriteBatch);
 </code></pre>
 <p>Now to render the level and entities we loaded in <code>Draw</code></p>
 <pre><code class="lang-csharp">spriteBatch.Begin(samplerState: SamplerState.PointClamp);

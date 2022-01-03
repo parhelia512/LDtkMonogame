@@ -1,10 +1,5 @@
 - name: Introduction
   href: intro.md
-  items:
-    - name: Quick Start
-      href: Introduction/quickstart.md
-    - name: Examples
-      href: Introduction/examples.md
 
 - name: Tutorials
   href: tutorials.md
@@ -17,10 +12,16 @@
       href: Tutorials/intgrid.md
     - name: Entity
       href: Tutorials/entity.md
+    - name: Codegen
+      href: Tutorials/codegen.md
+    - name: ContentPipeline
+      href: Tutorials/content.md
 
 - name: Changelog
   href: changelog.md
   items:
+    - name: 0.4.0
+      href: Changelog/0.4.0.md
     - name: 0.3.1
       href: Changelog/0.3.1.md
     - name: 0.3.0

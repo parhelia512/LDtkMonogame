@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>LDtkMonogame </title>
+    <title>Quick Start Guide </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="LDtkMonogame ">
+    <meta name="title" content="Quick Start Guide ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -73,10 +73,69 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="ldtkmonogame">LDtkMonogame</h1>
+<h1 id="quick-start-guide">Quick Start Guide</h1>
 
-<p>LDtk Monogame is a <a href="https://ldtk.io">LDtk</a> project loader and renderer for the <a href="https://www.monogame.net/">Monogame</a> Framework</p>
-<p>Tutorials and guides on how to use each class with best practices are all written here</p>
+<p>The easiest way to start using LDtkMonogame is to import it into the project using</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Package</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LDtkMonogame</td>
+<td><a href="https://www.nuget.org/packages/LDtkMonogame/"><img src="https://buildstats.info/nuget/LDtkMonogame" alt="NuGet Badge"></a></td>
+<td>Core LDtk Package</td>
+</tr>
+<tr>
+<td>LDtkMonogame.Codegen</td>
+<td><a href="https://www.nuget.org/packages/LDtkMonogame.Codegen/"><img src="https://buildstats.info/nuget/LDtkMonogame.Codegen" alt="LDtkMonogame.Codegen"> </a></td>
+<td>Codegen tool for ldtk thanks to <a href="https://github.com/codefrommars/ldtk_codegen">ldtk_codegen</a></td>
+</tr>
+<tr>
+<td>LDtkMonogame.ContentPipeline</td>
+<td><a href="https://www.nuget.org/packages/LDtkMonogame.ContentPipeline/"><img src="https://buildstats.info/nuget/LDtkMonogame.ContentPipeline" alt="LDtkMonogame.ContentPipeline"> </a></td>
+<td>Includes the dll needed for the MGCP tool</td>
+</tr>
+</tbody>
+</table>
+<p>Make sure to import the namespace at the top</p>
+<pre><code class="lang-csharp">using LDtk;
+
+// Optional
+using LDtk.Renderer;
+</code></pre>
+<p>LDtk.Renderer is a premade renderer for the levels, you can create your own if you have more specific needs
+<a href="https://github.com/IrishBruse/LDtkMonogame/blob/a1ddd544b3a89db1283faacc63968342ab26f2aa/LDtk/Renderer/LDtkRenderer.cs">LDtkRenderer.cs</a>
+is an example of how to make one.</p>
+<p>To get started loading ldtk files load a world in <code>Initialize</code>.</p>
+<pre><code class="lang-csharp">World world = LDtkWorld.LoadWorld(&quot;World&quot;, Content);
+or
+World world = LDtkWorld.LoadWorld(&quot;Data/World.ldtk&quot;);
+</code></pre>
+<p>Create the renderer in <code>Initialize</code>.</p>
+<pre><code class="lang-csharp">LDtkRenderer renderer = new LDtkRenderer(spriteBatch, Content);
+or
+LDtkRenderer renderer = new LDtkRenderer(spriteBatch);
+</code></pre>
+<p>Prerender Levels</p>
+<pre><code class="lang-csharp">for (int i = 0; i &lt; world.Levels.Length; i++)
+{
+    renderer.PrerenderLevel(world.Levels[i]);
+}
+</code></pre>
+<p>Now to render the level and entities we loaded in <code>Draw</code></p>
+<pre><code class="lang-csharp">GraphicsDevice.Clear(world.BgColor);
+
+spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+{
+    renderer.RenderPrerenderedLevel(world.Levels[i]);
+}
+spriteBatch.End();
+</code></pre>
 </article>
           </div>
           

@@ -1,6 +1,6 @@
 # LDtkMonogame
 
-LDtk Monogame is a [LDtk](https://ldtk.io) project loader and renderer for the [Monogame](https://www.monogame.net/) Framework
+[LDtkMonogame](https://github.com/IrishBruse/LDtkMonogame) is a [LDtk](https://ldtk.io) project loader and renderer for the [Monogame](https://www.monogame.net/) Framework.
 
 This is the documentation page for all LDtkMonogame related stuff  
 If you are looking for ldtk documentation thats [here](https://ldtk.io/)
@@ -11,13 +11,7 @@ If you are looking for ldtk documentation thats [here](https://ldtk.io/)
 
 ## Example
 
-This small game example [LDtkMonogame.Examples](https://github.com/IrishBruse/LDtkMonogame/tree/main/LDtkMonogame.Examples) showcases how easy it is to get setup and making levels for your game
+This small shooter game example [LDtkMonogameExample](https://github.com/IrishBruse/LDtkMonogameExample) showcases how easy it is to get setup and making levels for your game.
+It uses the contentpipeline
 
-How to run
-
--   Open the solution and hit run in visual studio or
--   `cd` into the `LDtkMonogame.Examples` folder and use `dotnet run` to play the example game
-
-You can even edit the .ldtk file and run it again to see the changes
-
-![Example Gameplay](~/art/screenshots/Example%20Project.gif "Gameplay")
+![Example Screenshot](https://raw.githubusercontent.com/IrishBruse/LDtkMonogameExample/master/Screenshot.png "Gameplay")

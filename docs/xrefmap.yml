@@ -2215,6 +2215,19 @@ references:
   isSpec: "True"
   fullName: LDtk.LDtkWorld.BgColor
   nameWithType: LDtkWorld.BgColor
+- uid: LDtk.LDtkWorld.Content
+  name: Content
+  href: api/LDtk.LDtkWorld.html#LDtk_LDtkWorld_Content
+  commentId: P:LDtk.LDtkWorld.Content
+  fullName: LDtk.LDtkWorld.Content
+  nameWithType: LDtkWorld.Content
+- uid: LDtk.LDtkWorld.Content*
+  name: Content
+  href: api/LDtk.LDtkWorld.html#LDtk_LDtkWorld_Content_
+  commentId: Overload:LDtk.LDtkWorld.Content
+  isSpec: "True"
+  fullName: LDtk.LDtkWorld.Content
+  nameWithType: LDtkWorld.Content
 - uid: LDtk.LDtkWorld.Defs
   name: Defs
   href: api/LDtk.LDtkWorld.html#LDtk_LDtkWorld_Defs
@@ -2315,24 +2328,12 @@ references:
   commentId: M:LDtk.LDtkWorld.LoadLevel(System.Int32)
   fullName: LDtk.LDtkWorld.LoadLevel(System.Int32)
   nameWithType: LDtkWorld.LoadLevel(Int32)
-- uid: LDtk.LDtkWorld.LoadLevel(System.Int32,Microsoft.Xna.Framework.Content.ContentManager)
-  name: LoadLevel(Int32, ContentManager)
-  href: api/LDtk.LDtkWorld.html#LDtk_LDtkWorld_LoadLevel_System_Int32_Microsoft_Xna_Framework_Content_ContentManager_
-  commentId: M:LDtk.LDtkWorld.LoadLevel(System.Int32,Microsoft.Xna.Framework.Content.ContentManager)
-  fullName: LDtk.LDtkWorld.LoadLevel(System.Int32, Microsoft.Xna.Framework.Content.ContentManager)
-  nameWithType: LDtkWorld.LoadLevel(Int32, ContentManager)
 - uid: LDtk.LDtkWorld.LoadLevel(System.String)
   name: LoadLevel(String)
   href: api/LDtk.LDtkWorld.html#LDtk_LDtkWorld_LoadLevel_System_String_
   commentId: M:LDtk.LDtkWorld.LoadLevel(System.String)
   fullName: LDtk.LDtkWorld.LoadLevel(System.String)
   nameWithType: LDtkWorld.LoadLevel(String)
-- uid: LDtk.LDtkWorld.LoadLevel(System.String,Microsoft.Xna.Framework.Content.ContentManager)
-  name: LoadLevel(String, ContentManager)
-  href: api/LDtk.LDtkWorld.html#LDtk_LDtkWorld_LoadLevel_System_String_Microsoft_Xna_Framework_Content_ContentManager_
-  commentId: M:LDtk.LDtkWorld.LoadLevel(System.String,Microsoft.Xna.Framework.Content.ContentManager)
-  fullName: LDtk.LDtkWorld.LoadLevel(System.String, Microsoft.Xna.Framework.Content.ContentManager)
-  nameWithType: LDtkWorld.LoadLevel(String, ContentManager)
 - uid: LDtk.LDtkWorld.LoadLevel*
   name: LoadLevel
   href: api/LDtk.LDtkWorld.html#LDtk_LDtkWorld_LoadLevel_
