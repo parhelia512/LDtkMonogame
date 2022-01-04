@@ -4,14 +4,12 @@ To open a ldtk project file you should start by creating a new `World` object as
 
 This will load the images from normal files (\*.png, \*.jpg etc)
 
-```csharp
-World world = new World(spriteBatch, "Assets/MyProject.ldtk");
+```cs
 ```
 
 or if you want to use Content/.xnb files you can pass `Content` to it.
 
-```csharp
-World world = new World(spriteBatch, "Assets/MyProject.ldtk", Content);
+```cs
 ```
 
 You will need to make sure your content is in the same relative folders as the origonal files in the project.

@@ -3,7 +3,7 @@
 Level's hold all the data for each individual level and include the tiles and all the layers including `Entities`, `Intgrids` and `Autotiles`.
 You can get levels from the world class you instantiated before by calling
 
-```csharp
+```cs
 Level myLevel = world.GetLevel("Level1");
 ```
 
@@ -13,7 +13,7 @@ check the api docs for all the functions and what they do
 If your level has custom fields you will need to inherit from `Level`
 and add the custom fields
 
-```csharp
+```cs
 public class CustomizedLevel : Level
 {
     public string biome;
@@ -23,6 +23,6 @@ public class CustomizedLevel : Level
 
 To load your `CustomizedLevel` you load a level like normal but also pass it your level class
 
-```csharp
+```cs
 CustomizedLevel customizedLevel = world.GetLevel<CustomizedLevel>("Level1");
 ```

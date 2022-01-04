@@ -10,7 +10,7 @@ The easiest way to start using LDtkMonogame is to import it into the project usi
 
 Make sure to import the namespace at the top
 
-```csharp
+```cs
 using LDtk;
 
 // Optional
@@ -23,7 +23,7 @@ is an example of how to make one.
 
 To get started loading ldtk files load a world in `Initialize`.
 
-```csharp
+```cs
 World world = LDtkWorld.LoadWorld("World", Content);
 or
 World world = LDtkWorld.LoadWorld("Data/World.ldtk");
@@ -31,7 +31,7 @@ World world = LDtkWorld.LoadWorld("Data/World.ldtk");
 
 Create the renderer in `Initialize`.
 
-```csharp
+```cs
 LDtkRenderer renderer = new LDtkRenderer(spriteBatch, Content);
 or
 LDtkRenderer renderer = new LDtkRenderer(spriteBatch);
@@ -39,7 +39,7 @@ LDtkRenderer renderer = new LDtkRenderer(spriteBatch);
 
 Prerender Levels
 
-```csharp
+```cs
 for (int i = 0; i < world.Levels.Length; i++)
 {
     renderer.PrerenderLevel(world.Levels[i]);
@@ -48,7 +48,7 @@ for (int i = 0; i < world.Levels.Length; i++)
 
 Now to render the level and entities we loaded in `Draw`
 
-```csharp
+```cs
 GraphicsDevice.Clear(world.BgColor);
 
 spriteBatch.Begin(samplerState: SamplerState.PointClamp);

@@ -77,20 +77,20 @@
 
 <p>Level's hold all the data for each individual level and include the tiles and all the layers including <code>Entities</code>, <code>Intgrids</code> and <code>Autotiles</code>.
 You can get levels from the world class you instantiated before by calling</p>
-<pre><code class="lang-csharp">Level myLevel = world.GetLevel(&quot;Level1&quot;);
+<pre><code class="lang-cs">Level myLevel = world.GetLevel(&quot;Level1&quot;);
 </code></pre>
 <p>Now with <code>myLevel</code> you can access all the ldtk layers inside of it using the functions
 check the api docs for all the functions and what they do</p>
 <p>If your level has custom fields you will need to inherit from <code>Level</code>
 and add the custom fields</p>
-<pre><code class="lang-csharp">public class CustomizedLevel : Level
+<pre><code class="lang-cs">public class CustomizedLevel : Level
 {
     public string biome;
     public int difficulty;
 }
 </code></pre>
 <p>To load your <code>CustomizedLevel</code> you load a level like normal but also pass it your level class</p>
-<pre><code class="lang-csharp">CustomizedLevel customizedLevel = world.GetLevel&lt;CustomizedLevel&gt;(&quot;Level1&quot;);
+<pre><code class="lang-cs">CustomizedLevel customizedLevel = world.GetLevel&lt;CustomizedLevel&gt;(&quot;Level1&quot;);
 </code></pre>
 </article>
           </div>

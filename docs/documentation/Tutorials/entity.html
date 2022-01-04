@@ -77,7 +77,7 @@
 
 <p>Entities are contained inside the level and are returned from the various <code>GetEntity/GetEntities</code> functions check the api docs for more information.</p>
 <p>Similar to levels entities can have custom fields you handle that data in the same way by creating a custom inherited class from Entity</p>
-<pre><code class="lang-csharp">public class Door : Entity
+<pre><code class="lang-cs">public class Door : Entity
 {
     // LDtk entity fields
     public string levelIdentifier;
@@ -85,7 +85,7 @@
 }
 </code></pre>
 <p>To load your <code>Door</code> you load a level like normal but also pass it your level class</p>
-<pre><code class="lang-csharp">Door[] doors = level.GetEntities&lt;Door&gt;();
+<pre><code class="lang-cs">Door[] doors = level.GetEntities&lt;Door&gt;();
 </code></pre>
 <p>If you dont want to inherit from a class you can create the entity fields in your class and the parser will load the data into the field aslong as they have the correct names</p>
 <ul>

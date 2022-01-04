@@ -4,7 +4,7 @@ Entities are contained inside the level and are returned from the various `GetEn
 
 Similar to levels entities can have custom fields you handle that data in the same way by creating a custom inherited class from Entity 
 
-```csharp
+```cs
 public class Door : Entity
 {
     // LDtk entity fields
@@ -15,7 +15,7 @@ public class Door : Entity
 
 To load your `Door` you load a level like normal but also pass it your level class
 
-```csharp
+```cs
 Door[] doors = level.GetEntities<Door>();
 ```
 

@@ -4,6 +4,6 @@ Intgrids can be intgrid rule layers or pure intgrid layers as they both hold int
 
 In the platformer example I used the intgrid for collisions
 
-```csharp
+```cs
 IntGrid collisions = level.GetIntGrid("Collisions");
 ```
