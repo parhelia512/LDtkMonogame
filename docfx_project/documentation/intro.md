@@ -10,7 +10,7 @@ The easiest way to start using LDtkMonogame is to import it into the project usi
 
 Make sure to import the namespace at the top
 
-```cs
+```
 using LDtk;
 
 // Optional
@@ -18,12 +18,12 @@ using LDtk.Renderer;
 ```
 
 LDtk.Renderer is a premade renderer for the levels, you can create your own if you have more specific needs
-[LDtkRenderer.cs](https://github.com/IrishBruse/LDtkMonogame/blob/a1ddd544b3a89db1283faacc63968342ab26f2aa/LDtk/Renderer/LDtkRenderer.cs)
+[LDtkRenderer.cs](https://github.com/IrishBruse/LDtkMonogame/blob/main/LDtk/Renderer/LDtkRenderer.cs)
 is an example of how to make one.
 
 To get started loading ldtk files load a world in `Initialize`.
 
-```cs
+```
 World world = LDtkWorld.LoadWorld("World", Content);
 or
 World world = LDtkWorld.LoadWorld("Data/World.ldtk");
@@ -31,7 +31,7 @@ World world = LDtkWorld.LoadWorld("Data/World.ldtk");
 
 Create the renderer in `Initialize`.
 
-```cs
+```
 LDtkRenderer renderer = new LDtkRenderer(spriteBatch, Content);
 or
 LDtkRenderer renderer = new LDtkRenderer(spriteBatch);
@@ -39,7 +39,7 @@ LDtkRenderer renderer = new LDtkRenderer(spriteBatch);
 
 Prerender Levels
 
-```cs
+```
 for (int i = 0; i < world.Levels.Length; i++)
 {
     renderer.PrerenderLevel(world.Levels[i]);
@@ -48,7 +48,7 @@ for (int i = 0; i < world.Levels.Length; i++)
 
 Now to render the level and entities we loaded in `Draw`
 
-```cs
+```
 GraphicsDevice.Clear(world.BgColor);
 
 spriteBatch.Begin(samplerState: SamplerState.PointClamp);

@@ -75,9 +75,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="intgrid">IntGrid</h1>
 
-<p>Intgrids can be intgrid rule layers or pure intgrid layers as they both hold integer values. The intgrid is returned from a level when calling <code>level.GetIntGrid(&quot;layer name&quot;);</code></p>
-<p>In the platformer example I used the intgrid for collisions</p>
-<pre><code class="lang-cs">IntGrid collisions = level.GetIntGrid(&quot;Collisions&quot;);
+<p>Intgrids can be intgrid rule layers or pure intgrid layers as they both hold integer values.
+The intgrid is returned from a level when calling <code>level.GetIntGrid(&quot;layer name&quot;);</code>.</p>
+<p>In the <a href="https://github.com/IrishBruse/LDtkMonogameExample/blob/d4784bcd4849582ba66ff2f0bb5281e6069aaeda/Entities/PlayerEntity.cs#L133">example game</a> I used the intgrid for collisions.</p>
+<pre><code>LDtkIntGrid collisions = level.GetIntGrid(&quot;Tiles&quot;);
 </code></pre>
 </article>
           </div>

@@ -75,23 +75,20 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="level">Level</h1>
 
-<p>Level's hold all the data for each individual level and include the tiles and all the layers including <code>Entities</code>, <code>Intgrids</code> and <code>Autotiles</code>.
-You can get levels from the world class you instantiated before by calling</p>
-<pre><code class="lang-cs">Level myLevel = world.GetLevel(&quot;Level1&quot;);
+<p>Level's hold all the data for each individual level and include the tiles and all the layers including <code>Entities</code>, <code>Intgrids</code> and <code>Autotiles</code>.</p>
+<p>If you are using external levels with ldtk. You will need to load the level otherwise ignore this next step.</p>
+<pre><code>Level myLevel = world.LoadLevel(&quot;Level1&quot;);
 </code></pre>
-<p>Now with <code>myLevel</code> you can access all the ldtk layers inside of it using the functions
-check the api docs for all the functions and what they do</p>
-<p>If your level has custom fields you will need to inherit from <code>Level</code>
-and add the custom fields</p>
-<pre><code class="lang-cs">public class CustomizedLevel : Level
+<p>Now with <code>myLevel</code> you can access all the ldtk layers inside of it.<br>
+If your level has custom fields you will need to load the data using <code>GetCustomFields()</code>.</p>
+<p>If you are using the <a href="codegen.html">Codegen</a> tool the <code>LDtkLevelData</code> file will be created for you automatically.</p>
+<pre><code class="lang-cs">public class LDtkLevelData
 {
     public string biome;
     public int difficulty;
 }
 </code></pre>
-<p>To load your <code>CustomizedLevel</code> you load a level like normal but also pass it your level class</p>
-<pre><code class="lang-cs">CustomizedLevel customizedLevel = world.GetLevel&lt;CustomizedLevel&gt;(&quot;Level1&quot;);
-</code></pre>
+<p>For more information on the level refer to the ldtk documentation <a href="https://ldtk.io/json/#ldtk-LevelJson">ldtk-LevelJson</a></p>
 </article>
           </div>
           

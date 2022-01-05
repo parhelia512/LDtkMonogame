@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Content </title>
+    <title>Content Pipeline Extension </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Content ">
+    <meta name="title" content="Content Pipeline Extension ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -73,8 +73,31 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="content">Content</h1>
+<h1 id="content-pipeline-extension">Content Pipeline Extension</h1>
 
+<p><a href="https://www.nuget.org/packages/LDtkMonogame.ContentPipeline/"><img src="https://buildstats.info/nuget/LDtkMonogame.ContentPipeline" alt="LDtkMonogame.Codegen"> </a></p>
+<p>This is going to be a bit weird but hang on with me as the content pipeline is really particular.</p>
+<p>In your project we are going to need to open a commandline cmd or windows terminal in the folder.
+You will then need to navigate to that directory and run these commands.</p>
+<pre><code class="lang-shell">dotnet add package LDtkMonogame.ContentPipeline
+</code></pre>
+<p>Once that has finished it will have cached the project to the packages directory on your system.<br>
+Now you can remove it from your project as your game does not actually need the dll its only used for processing the files.</p>
+<pre><code class="lang-shell">dotnet remove package LDtkMonogame.ContentPipeline
+</code></pre>
+<p>We have the dll cached to the harddrive you can now go and locate the dll we will be adding to the content pipeline file.<br>
+It should be located here.</p>
+<pre><code class="lang-shell">C:\Users\&lt;USERNAME&gt;\.nuget\packages\ldtkmonogame.contentpipeline\&lt;VERSION&gt;\lib\netcoreapp3.1
+</code></pre>
+<p>Where <code>&lt;USERNAME&gt;</code> is your username on your machine and <code>&lt;VERSION&gt;</code> is the latest version of the contentpipeline nuget package <a href="https://www.nuget.org/packages/LDtkMonogame.ContentPipeline/"><img src="https://buildstats.info/nuget/LDtkMonogame.ContentPipeline" alt="LDtkMonogame.Codegen"> </a> as of right now.</p>
+<p>Now with that path you can paste it into your content.mgcb here is what i did in mine.</p>
+<pre><code class="lang-shell">#-------------------------------- References --------------------------------#
+
+/reference:C:\Users\IrishBruse\.nuget\packages\ldtkmonogame.contentpipeline\0.4.1\lib\netcoreapp3.1\LDtk.ContentPipeline.dll
+
+#---------------------------------- Content ---------------------------------#
+</code></pre>
+<p>All in one line its being wrapped( Thanks docfx &gt;:( ).</p>
 </article>
           </div>
           

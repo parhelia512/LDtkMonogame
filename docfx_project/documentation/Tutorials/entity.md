@@ -1,30 +1,31 @@
 # Entity
 
-Entities are contained inside the level and are returned from the various `GetEntity/GetEntities` functions check the api docs for more information. 
+Entities are contained inside the level and are returned from the various `GetEntity()`/`GetEntities()` methods, check the api docs for more information.  
+Similar to levels entities can have custom fields you handle that data in the same way by creating a custom inherited class from ILDtkEntity.  
 
-Similar to levels entities can have custom fields you handle that data in the same way by creating a custom inherited class from Entity 
+If you are using the [Codegen](codegen.md) tool the `Gun_Pickup` file would be created for you automatically.  
 
 ```cs
-public class Door : Entity
+public class Gun_Pickup : ILDtkEntity
 {
-    // LDtk entity fields
-    public string levelIdentifier;
-    public int destinationDoor;
+    public long Uid { get; set; }
+    public string Identifier { get; set; }
+    public Vector2 Size { get; set; }
+    public Vector2 Position { get; set; }
+    public Vector2 Pivot { get; set; }
+    public Rectangle Tile { get; set; }
+    public Color EditorVisualColor { get; set; }
 }
 ```
 
-To load your `Door` you load a level like normal but also pass it your level class
+To load your `Gun_Pickup` you load a level like normal but also pass it your level class
 
-```cs
-Door[] doors = level.GetEntities<Door>();
+```
+Gun_Pickup[] gunPickups = level.GetEntities<Gun_Pickup>();
 ```
 
-If you dont want to inherit from a class you can create the entity fields in your class and the parser will load the data into the field aslong as they have the correct names
+If you have one entity `Player` you could load it 
 
--   `Position`
--   `LevelPosition`
--   `Pivot`
--   `Texture` (Optional)
--   `Size`
--   `EditorVisualColor` (Debug Only)
--   `Tile` (Optional)
+```
+Player playerSpawn = level.GetEntity<Player>();
+```

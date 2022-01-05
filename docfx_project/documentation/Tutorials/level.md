@@ -1,28 +1,24 @@
 # Level
 
 Level's hold all the data for each individual level and include the tiles and all the layers including `Entities`, `Intgrids` and `Autotiles`.
-You can get levels from the world class you instantiated before by calling
 
-```cs
-Level myLevel = world.GetLevel("Level1");
+If you are using external levels with ldtk. You will need to load the level otherwise ignore this next step.
+
+```
+Level myLevel = world.LoadLevel("Level1");
 ```
 
-Now with `myLevel` you can access all the ldtk layers inside of it using the functions
-check the api docs for all the functions and what they do
+Now with `myLevel` you can access all the ldtk layers inside of it.  
+If your level has custom fields you will need to load the data using `GetCustomFields()`.  
 
-If your level has custom fields you will need to inherit from `Level`
-and add the custom fields
+If you are using the [Codegen](codegen.md) tool the `LDtkLevelData` file will be created for you automatically.  
 
 ```cs
-public class CustomizedLevel : Level
+public class LDtkLevelData
 {
     public string biome;
     public int difficulty;
 }
 ```
 
-To load your `CustomizedLevel` you load a level like normal but also pass it your level class
-
-```cs
-CustomizedLevel customizedLevel = world.GetLevel<CustomizedLevel>("Level1");
-```
+For more information on the level refer to the ldtk documentation [ldtk-LevelJson](https://ldtk.io/json/#ldtk-LevelJson)

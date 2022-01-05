@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
   
@@ -103,32 +103,32 @@
 </tbody>
 </table>
 <p>Make sure to import the namespace at the top</p>
-<pre><code class="lang-cs">using LDtk;
+<pre><code>using LDtk;
 
 // Optional
 using LDtk.Renderer;
 </code></pre>
 <p>LDtk.Renderer is a premade renderer for the levels, you can create your own if you have more specific needs
-<a href="https://github.com/IrishBruse/LDtkMonogame/blob/a1ddd544b3a89db1283faacc63968342ab26f2aa/LDtk/Renderer/LDtkRenderer.cs">LDtkRenderer.cs</a>
+<a href="https://github.com/IrishBruse/LDtkMonogame/blob/main/LDtk/Renderer/LDtkRenderer.cs">LDtkRenderer.cs</a>
 is an example of how to make one.</p>
 <p>To get started loading ldtk files load a world in <code>Initialize</code>.</p>
-<pre><code class="lang-cs">World world = LDtkWorld.LoadWorld(&quot;World&quot;, Content);
+<pre><code>World world = LDtkWorld.LoadWorld(&quot;World&quot;, Content);
 or
 World world = LDtkWorld.LoadWorld(&quot;Data/World.ldtk&quot;);
 </code></pre>
 <p>Create the renderer in <code>Initialize</code>.</p>
-<pre><code class="lang-cs">LDtkRenderer renderer = new LDtkRenderer(spriteBatch, Content);
+<pre><code>LDtkRenderer renderer = new LDtkRenderer(spriteBatch, Content);
 or
 LDtkRenderer renderer = new LDtkRenderer(spriteBatch);
 </code></pre>
 <p>Prerender Levels</p>
-<pre><code class="lang-cs">for (int i = 0; i &lt; world.Levels.Length; i++)
+<pre><code>for (int i = 0; i &lt; world.Levels.Length; i++)
 {
     renderer.PrerenderLevel(world.Levels[i]);
 }
 </code></pre>
 <p>Now to render the level and entities we loaded in <code>Draw</code></p>
-<pre><code class="lang-cs">GraphicsDevice.Clear(world.BgColor);
+<pre><code>GraphicsDevice.Clear(world.BgColor);
 
 spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 {

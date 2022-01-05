@@ -75,28 +75,26 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="entity">Entity</h1>
 
-<p>Entities are contained inside the level and are returned from the various <code>GetEntity/GetEntities</code> functions check the api docs for more information.</p>
-<p>Similar to levels entities can have custom fields you handle that data in the same way by creating a custom inherited class from Entity</p>
-<pre><code class="lang-cs">public class Door : Entity
+<p>Entities are contained inside the level and are returned from the various <code>GetEntity()</code>/<code>GetEntities()</code> methods, check the api docs for more information.<br>
+Similar to levels entities can have custom fields you handle that data in the same way by creating a custom inherited class from ILDtkEntity.</p>
+<p>If you are using the <a href="codegen.html">Codegen</a> tool the <code>Gun_Pickup</code> file would be created for you automatically.</p>
+<pre><code class="lang-cs">public class Gun_Pickup : ILDtkEntity
 {
-    // LDtk entity fields
-    public string levelIdentifier;
-    public int destinationDoor;
+    public long Uid { get; set; }
+    public string Identifier { get; set; }
+    public Vector2 Size { get; set; }
+    public Vector2 Position { get; set; }
+    public Vector2 Pivot { get; set; }
+    public Rectangle Tile { get; set; }
+    public Color EditorVisualColor { get; set; }
 }
 </code></pre>
-<p>To load your <code>Door</code> you load a level like normal but also pass it your level class</p>
-<pre><code class="lang-cs">Door[] doors = level.GetEntities&lt;Door&gt;();
+<p>To load your <code>Gun_Pickup</code> you load a level like normal but also pass it your level class</p>
+<pre><code>Gun_Pickup[] gunPickups = level.GetEntities&lt;Gun_Pickup&gt;();
 </code></pre>
-<p>If you dont want to inherit from a class you can create the entity fields in your class and the parser will load the data into the field aslong as they have the correct names</p>
-<ul>
-<li><code>Position</code></li>
-<li><code>LevelPosition</code></li>
-<li><code>Pivot</code></li>
-<li><code>Texture</code> (Optional)</li>
-<li><code>Size</code></li>
-<li><code>EditorVisualColor</code> (Debug Only)</li>
-<li><code>Tile</code> (Optional)</li>
-</ul>
+<p>If you have one entity <code>Player</code> you could load it</p>
+<pre><code>Player playerSpawn = level.GetEntity&lt;Player&gt;();
+</code></pre>
 </article>
           </div>
           

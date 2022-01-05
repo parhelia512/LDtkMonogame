@@ -75,17 +75,17 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="world">World</h1>
 
-<p>To open a ldtk project file you should start by creating a new <code>World</code> object as this is what hold all the data to a ldtk project.</p>
-<p>This will load the images from normal files (*.png, *.jpg etc)</p>
-<pre><code class="lang-csharp">World world = new World(spriteBatch, &quot;Assets/MyProject.ldtk&quot;);
+<p>To open a ldtk project file you should start by creating a new <code>World</code> object as this is what holds all the data to a ldtk project.</p>
+<p>This will load <code>.ldtk</code> world directly from disk.</p>
+<pre><code>World world = LDtkWorld.LoadWorld(&quot;Assets/World.ldtk&quot;);
 </code></pre>
-<p>or if you want to use Content/.xnb files you can pass <code>Content</code> to it.</p>
-<pre><code class="lang-csharp">World world = new World(spriteBatch, &quot;Assets/MyProject.ldtk&quot;, Content);
+<p>This will load <code>.ldtk</code> world from the content pipeline.</p>
+<pre><code>World world = LDtkWorld.LoadWorld(&quot;World&quot;, Content);
 </code></pre>
-<p>You will need to make sure your content is in the same relative folders as the origonal files in the project.
-If you are unsure check out the example project <a href="https://github.com/IrishBruse/LDtkMonogame/tree/main/LDtkMonogame.Examples/Platformer/">here</a>.</p>
-<p>Now that you have a reference to the world you can use it for handling<br>
-levels you want to use in your game.</p>
+<p>You will need to make sure your files are in the same relative folders as the origonal files in the project.
+If you are unsure check out the example project <a href="https://github.com/IrishBruse/LDtkMonogameExample">here</a>.</p>
+<p>Now that you have a reference to the world you can use it for handling levels you want to use in your game.</p>
+<p>For more information on the world refer to the ldtk documentation <a href="https://ldtk.io/json/#ldtk-ProjectJson">ldtk-ProjectJson</a></p>
 </article>
           </div>
           

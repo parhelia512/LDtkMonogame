@@ -22,6 +22,19 @@
                 "${workspaceFolder}/docs/"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean",
+            "command": "rd",
+            "type": "shell",
+            "args": [
+                "${workspaceFolder}/docs/",
+                "-Path",
+                ".\\docs\\",
+                "-Force",
+                "-Recurse"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

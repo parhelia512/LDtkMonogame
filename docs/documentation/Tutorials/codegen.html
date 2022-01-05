@@ -77,7 +77,8 @@
 
 <p><a href="https://www.nuget.org/packages/LDtkMonogame.Codegen/"><img src="https://buildstats.info/nuget/LDtkMonogame.Codegen" alt="LDtkMonogame.Codegen"> </a></p>
 <p>LDtk.Codegen package is a code generator that will create c# files for your entities from <code>.ldtk</code> files.
-This means you can make the variable and set them in ldtk without having to copy the names into a script just so you can use them in your code.</p>
+This means you can make the variable and set them in ldtk without having to copy the names into a script just so you can use them in your code.
+This is very hany when your ldtk file starts to get alot bigger in size.</p>
 <h2 id="setup">Setup</h2>
 <p>First you need to install the tool which is easy open up cmd/terminal and run</p>
 <pre><code class="lang-shell">dotnet tool install --global LDtkMonogame.Codegen
@@ -87,11 +88,31 @@ This means you can make the variable and set them in ldtk without having to copy
 </code></pre>
 <p>It will print a help message to the screen telling you how you can configure ldtkgen</p>
 <h2 id="automation">Automation</h2>
-<p>So running the tool on every <code>.ldtk</code> file you have and remembering the arguments to pass every time would get abit out of hand so you can automate that</p>
+<p>So running the tool on every <code>.ldtk</code> file you have and remembering the arguments to pass every time would get abit out of hand so you can automate that<br>
+put this in your <code>.csproj</code> file and set the path to point to your ldtk file(be careful with paths that have a space you will have to escape those in the string).</p>
 <pre><code class="lang-xml">&lt;Target Name=&quot;Codegen&quot; BeforeTargets=&quot;BeforeBuild&quot;&gt;
     &lt;Exec Command=&quot;ldtkgen -i Content/World.ldtk&quot; /&gt;
 &lt;/Target&gt;
 </code></pre>
+<h2 id="ldtkgen-flags">ldtkgen flags</h2>
+<ul>
+<li><p>-i, --input         <strong>Required</strong>. Input LDtk world file.</p>
+</li>
+<li><p>-o, --output        <strong>(Default: LDtkTypes/)</strong> The output folder/file depending on if single file is set.</p>
+</li>
+<li><p>-n, --namespace     <strong>(Default: LDtkTypes)</strong> Namespace to put the generated files into.</p>
+</li>
+<li><p>--LevelClassName    <strong>(Default: LDtkLevelData)</strong> The name to give the custom level file.</p>
+</li>
+<li><p>--SingleFile        <strong>(Default: false)</strong> Output all the LDtk files into a single file.</p>
+</li>
+<li><p>--PointAsVector2    <strong>(Default: false)</strong> Convert any Point fields or Point[] to Vector2 or Vector2[]</p>
+</li>
+<li><p>--help              Display the help screen.</p>
+</li>
+<li><p>--version           Display version information.</p>
+</li>
+</ul>
 </article>
           </div>
           
