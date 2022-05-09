@@ -1,7 +1,0 @@
-apiRules:
-  - exclude:
-      uidRegex: ^LDtk\.Json
-      type: Namespace
-  - exclude:
-      uidRegex: ^LDtk\.ContentPipeline
-      type: Namespace
