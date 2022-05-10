@@ -1,0 +1,552 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ldtk">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>LDtk Reference - LDtkMonogame</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="The LDtkMonogame nuget documentation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ldtk" : "ldtk";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ldtk')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="menu-bar-sidebar"> </div>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="tutorials.html"><strong aria-hidden="true">2.</strong> Tutorials</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Tutorials/world.html"><strong aria-hidden="true">2.1.</strong> World</a></li><li class="chapter-item expanded "><a href="Tutorials/level.html"><strong aria-hidden="true">2.2.</strong> Level</a></li><li class="chapter-item expanded "><a href="Tutorials/intgrid.html"><strong aria-hidden="true">2.3.</strong> IntGrid</a></li><li class="chapter-item expanded "><a href="Tutorials/entity.html"><strong aria-hidden="true">2.4.</strong> Entity</a></li><li class="chapter-item expanded "><a href="Tutorials/codegen.html"><strong aria-hidden="true">2.5.</strong> Codegen</a></li><li class="chapter-item expanded "><a href="Tutorials/content.html"><strong aria-hidden="true">2.6.</strong> ContentPipeline</a></li></ol></li><li class="chapter-item expanded "><a href="LDtkReference.html" class="active"><strong aria-hidden="true">3.</strong> LDtk Reference</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="changelog.html"><strong aria-hidden="true">4.</strong> Changelog</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Changelog/0.6.0.html"><strong aria-hidden="true">4.1.</strong> 0.6.0</a></li><li class="chapter-item expanded "><a href="Changelog/0.5.0.html"><strong aria-hidden="true">4.2.</strong> 0.5.0</a></li><li class="chapter-item expanded "><a href="Changelog/0.4.0.html"><strong aria-hidden="true">4.3.</strong> 0.4.0</a></li><li class="chapter-item expanded "><a href="Changelog/0.3.1.html"><strong aria-hidden="true">4.4.</strong> 0.3.1</a></li><li class="chapter-item expanded "><a href="Changelog/0.3.0.html"><strong aria-hidden="true">4.5.</strong> 0.3.0</a></li><li class="chapter-item expanded "><a href="Changelog/0.2.0.html"><strong aria-hidden="true">4.6.</strong> 0.2.0</a></li><li class="chapter-item expanded "><a href="Changelog/0.1.1.html"><strong aria-hidden="true">4.7.</strong> 0.1.1</a></li><li class="chapter-item expanded "><a href="Changelog/0.1.0.html"><strong aria-hidden="true">4.8.</strong> 0.1.0</a></li><li class="chapter-item expanded "><a href="Changelog/0.0.1.html"><strong aria-hidden="true">4.9.</strong> 0.0.1</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">LDtkMonogame</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/IrishBruse/LDtkMonogame" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ldtk-json-structure-version-113"><a class="header" href="#ldtk-json-structure-version-113">LDtk Json structure (version 1.1.3)</a></h1>
+<ul>
+<li><a href="#ldtk-json-structure-version-113">LDtk Json structure (version 1.1.3)</a></li>
+<li><a href="#ldtk-json-root">LDtk Json root</a>
+<ul>
+<li><a href="#world">World</a></li>
+</ul>
+</li>
+<li><a href="#level">Level</a>
+<ul>
+<li><a href="#layer-instance">Layer instance</a></li>
+<li><a href="#tile-instance">Tile instance</a></li>
+<li><a href="#entity-instance">Entity instance</a></li>
+<li><a href="#field-instance">Field instance</a>
+<ul>
+<li><a href="#field-instance-entity-reference">Field instance entity reference</a></li>
+<li><a href="#field-instance-grid-point">Field instance grid point</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#definitions">Definitions</a>
+<ul>
+<li><a href="#layer-definition">Layer definition</a>
+<ul>
+<li><a href="#auto-layer-rule-definition">Auto-layer rule definition</a></li>
+</ul>
+</li>
+<li><a href="#entity-definition">Entity definition</a>
+<ul>
+<li><a href="#field-definition">Field definition</a></li>
+<li><a href="#tileset-rectangle">Tileset rectangle</a></li>
+</ul>
+</li>
+<li><a href="#tileset-definition">Tileset definition</a></li>
+<li><a href="#enum-definition">Enum definition</a>
+<ul>
+<li><a href="#enum-value-definition">Enum value definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a id="ldtk-ProjectJson" name="ldtk-ProjectJson"></a></p>
+<h1 id="ldtk-json-root"><a class="header" href="#ldtk-json-root">LDtk Json root</a></h1>
+<p>This is the root of any Project JSON file. It contains:</p>
+<ul>
+<li>the project settings,</li>
+<li>an array of levels,</li>
+<li>a group of definitions (that can probably be safely ignored for most users).</li>
+</ul>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>bgColor</code></td><td>String<br/><small class="color"> <em>Hex color &quot;#rrggbb&quot;</em> </small></td><td>Project background color</td></tr>
+<tr><td><code>defs</code></td><td><a href="#ldtk-DefinitionsJson">Definitions</a></td><td>A structure containing all the definitions of this project</td></tr>
+<tr><td><code>externalLevels</code><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>If TRUE, one file will be saved for the project (incl. all its definitions) and one file in a sub-folder for each level.</td></tr>
+<tr><td><code>jsonVersion</code></td><td>String</td><td>File format version</td></tr>
+<tr><td><code>levels</code></td><td>Array of <a href="#ldtk-LevelJson">Level</a></td><td>All levels. The order of this array is only relevant in <code>LinearHorizontal</code> and <code>linearVertical</code> world layouts (see <code>worldLayout</code> value).<br/>		Otherwise, you should refer to the <code>worldX</code>,<code>worldY</code> coordinates of each Level.</td></tr>
+<tr><td><code>worldGridHeight</code><br/><sup class="only">Only <em>'GridVania' layouts</em></sup><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this field will move to the <code>worlds</code> array after the &quot;multi-worlds&quot; update. It will then be <code>null</code>. You can enable the Multi-worlds advanced project option to enable the change immediately.<br/><br/>		Height of the world grid in pixels.</td></tr>
+<tr><td><code>worldGridWidth</code><br/><sup class="only">Only <em>'GridVania' layouts</em></sup><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this field will move to the <code>worlds</code> array after the &quot;multi-worlds&quot; update. It will then be <code>null</code>. You can enable the Multi-worlds advanced project option to enable the change immediately.<br/><br/>		Width of the world grid in pixels.</td></tr>
+<tr><td><code>worldLayout</code><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Enum <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this field will move to the <code>worlds</code> array after the &quot;multi-worlds&quot; update. It will then be <code>null</code>. You can enable the Multi-worlds advanced project option to enable the change immediately.<br/><br/>		An enum that describes how levels are organized in this project (ie. linearly or in a 2D space).<br/> Possible values: &lt;<code>null</code>&gt;, <code>Free</code>, <code>GridVania</code>, <code>LinearHorizontal</code>, <code>LinearVertical</code></td></tr>
+<tr><td><code>worlds</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of <a href="#ldtk-WorldJson">World</a></td><td>This array is not used yet in current LDtk version (so, for now, it's always empty).<br/><br/>In a later update, it will be possible to have multiple Worlds in a single project, each containing multiple Levels.<br/><br/>What will change when &quot;Multiple worlds&quot; support will be added to LDtk:<br/><br/> - in current version, a LDtk project file can only contain a single world with multiple levels in it. In this case, levels and world layout related settings are stored in the root of the JSON.<br/> - after the &quot;Multiple worlds&quot; update, there will be a <code>worlds</code> array in root, each world containing levels and layout settings. Basically, it's pretty much only about moving the <code>levels</code> array to the <code>worlds</code> array, along with world layout related values (eg. <code>worldGridWidth</code> etc).<br/><br/>If you want to start supporting this future update easily, please refer to this documentation: https://github.com/deepnight/ldtk/issues/231</td></tr>
+<tr><td><code>appBuildId</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td>LDtk application build identifier.<br/>		This is only used to identify the LDtk version that generated this particular project file, which can be useful for specific bug fixing. Note that the build identifier is just the date of the release, so it's not unique to each user (one single global ID per LDtk public release), and as a result, completely anonymous.</td></tr>
+<tr><td><code>backupLimit</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Number of backup files to keep, if the <code>backupOnSave</code> is TRUE</td></tr>
+<tr><td><code>backupOnSave</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>If TRUE, an extra copy of the project will be created in a sub folder, when saving.</td></tr>
+<tr><td><code>defaultGridSize</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Default grid size for new layers</td></tr>
+<tr><td><code>defaultLevelBgColor</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /></td><td>String<br/><small class="color"> <em>Hex color &quot;#rrggbb&quot;</em> </small></td><td>Default background color of levels</td></tr>
+<tr><td><code>defaultLevelHeight</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this field will move to the <code>worlds</code> array after the &quot;multi-worlds&quot; update. It will then be <code>null</code>. You can enable the Multi-worlds advanced project option to enable the change immediately.<br/><br/>		Default new level height</td></tr>
+<tr><td><code>defaultLevelWidth</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this field will move to the <code>worlds</code> array after the &quot;multi-worlds&quot; update. It will then be <code>null</code>. You can enable the Multi-worlds advanced project option to enable the change immediately.<br/><br/>		Default new level width</td></tr>
+<tr><td><code>defaultPivotX</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td>Default X pivot (0 to 1) for new entities</td></tr>
+<tr><td><code>defaultPivotY</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td>Default Y pivot (0 to 1) for new entities</td></tr>
+<tr><td><code>exportTiled</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>If TRUE, a Tiled compatible file will also be generated along with the LDtk JSON file (default is FALSE)</td></tr>
+<tr><td><code>flags</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Array of Enum</td><td>An array containing various advanced flags (ie. options or other states).<br/> Possible values: <code>DiscardPreCsvIntGrid</code>, <code>ExportPreCsvIntGridFormat</code>, <code>IgnoreBackupSuggest</code>, <code>PrependIndexToLevelFileNames</code>, <code>MultiWorlds</code>, <code>UseMultilinesType</code></td></tr>
+<tr><td><code>identifierStyle</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Enum</td><td>Naming convention for Identifiers (first-letter uppercase, full uppercase etc.)<br/> Possible values: <code>Capitalize</code>, <code>Uppercase</code>, <code>Lowercase</code>, <code>Free</code></td></tr>
+<tr><td><code>imageExportMode</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.9.3-gray.svg" alt="Generic badge" /></td><td>Enum</td><td>&quot;Image export&quot; option when saving project.<br/> Possible values: <code>None</code>, <code>OneImagePerLayer</code>, <code>OneImagePerLevel</code>, <code>LayersAndLevels</code></td></tr>
+<tr><td><code>levelNamePattern</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>The default naming convention for level identifiers.</td></tr>
+<tr><td><code>minifyJson</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>If TRUE, the Json is partially minified (no indentation, nor line breaks, default is FALSE)</td></tr>
+<tr><td><code>nextUid</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Next Unique integer ID available</td></tr>
+<tr><td><code>pngFilePattern</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.7.2-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td>File naming pattern for exported PNGs</td></tr>
+<tr><td><code>simplifiedExport</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.1.0-green.svg" alt="Generic badge" /></td><td>Bool</td><td>If TRUE, a very simplified will be generated on saving, for quicker &amp; easier engine integration.</td></tr>
+<tr><td><code>tutorialDesc</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td>This optional description is used by LDtk Samples to show up some informations and instructions.</td></tr>
+<tr><td><del><code>exportPng</code></del><br/><sup class="internal"><em>Only used by editor</em></sup><br/><sup class="deprecated"><em>DEPRECATED!</em></sup></td><td>Bool <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this deprecated value is no longer exported since version 0.9.3<br/> <br/> Replaced by: <code>imageExportMode</code></td></tr>
+</tbody></table>
+<p><a id="ldtk-WorldJson" name="ldtk-WorldJson"></a></p>
+<h2 id="world"><a class="header" href="#world">World</a></h2>
+<p><strong>IMPORTANT</strong>: this type is not used <em>yet</em> in current LDtk version. It's only presented here as a preview of a planned feature.</p>
+<p>A World contains multiple levels, and it has its own layout settings.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>identifier</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>User defined unique identifier</td></tr>
+<tr><td><code>iid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>Unique instance identifer</td></tr>
+<tr><td><code>levels</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of <a href="#ldtk-LevelJson">Level</a></td><td>All levels from this world. The order of this array is only relevant in <code>LinearHorizontal</code> and <code>linearVertical</code> world layouts (see <code>worldLayout</code> value). Otherwise, you should refer to the <code>worldX</code>,<code>worldY</code> coordinates of each Level.</td></tr>
+<tr><td><code>worldGridHeight</code><br/><sup class="only">Only <em>'GridVania' layouts</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Height of the world grid in pixels.</td></tr>
+<tr><td><code>worldGridWidth</code><br/><sup class="only">Only <em>'GridVania' layouts</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Width of the world grid in pixels.</td></tr>
+<tr><td><code>worldLayout</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Enum</td><td>An enum that describes how levels are organized in this project (ie. linearly or in a 2D space).<br/> Possible values: <code>Free</code>, <code>GridVania</code>, <code>LinearHorizontal</code>, <code>LinearVertical</code></td></tr>
+<tr><td><code>defaultLevelHeight</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Default new level height</td></tr>
+<tr><td><code>defaultLevelWidth</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Default new level width</td></tr>
+</tbody></table>
+<p><a id="ldtk-LevelJson" name="ldtk-LevelJson"></a></p>
+<h1 id="level"><a class="header" href="#level">Level</a></h1>
+<p>This section contains all the level data. It can be found in 2 distinct forms, depending on Project current settings:</p>
+<ul>
+<li>If &quot;<em>Separate level files</em>&quot; is <strong>disabled</strong> (default): full level data is <em>embedded</em> inside the main Project JSON file,</li>
+<li>If &quot;<em>Separate level files</em>&quot; is <strong>enabled</strong>: level data is stored in <em>separate</em> standalone <code>.ldtkl</code> files (one per level). In this case, the main Project JSON file will still contain most level data, except heavy sections, like the <code>layerInstances</code> array (which will be null). The <code>externalRelPath</code> string points to the <code>ldtkl</code> file.</li>
+</ul>
+<p>A <code>ldtkl</code> file is just a JSON file containing exactly what is described below.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_bgColor</code><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /></td><td>String<br/><small class="color"> <em>Hex color &quot;#rrggbb&quot;</em> </small></td><td>Background color of the level (same as <code>bgColor</code>, except the default value is automatically used here if its value is <code>null</code>)</td></tr>
+<tr><td><code>_bgPos</code><br/><sup class="only">Only <em>If background image exists</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Object <em>(can be <code>null</code>)</em></td><td>Position informations of the background image, if there is one.<br/> This object contains the following fields:<br/> <ul><li><strong><code>cropRect</code></strong> <strong>(Array of Float</strong>) : <em>An array of 4 float values describing the cropped sub-rectangle of the displayed background image. This cropping happens when original is larger than the level bounds. Array format: <code>[ cropX, cropY, cropWidth, cropHeight ]</code></em></li><li><strong><code>scale</code></strong> <strong>(Array of Float</strong>) : <em>An array containing the <code>[scaleX,scaleY]</code> values of the <strong>cropped</strong> background image, depending on <code>bgPos</code> option.</em></li><li><strong><code>topLeftPx</code></strong> <strong>(Array of Int</strong>) : <em>An array containing the <code>[x,y]</code> pixel coordinates of the top-left corner of the <strong>cropped</strong> background image, depending on <code>bgPos</code> option.</em></li></ul></td></tr>
+<tr><td><code>_neighbours</code><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of Object</td><td>An array listing all other levels touching this one on the world map.<br/>		Only relevant for world layouts where level spatial positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, this array is always empty.<br/> This object contains the following fields:<br/> <ul><li><strong><code>dir</code></strong> <strong>(String</strong>) : <em>A single lowercase character tipping on the level location (<code>n</code>orth, <code>s</code>outh, <code>w</code>est, <code>e</code>ast).</em></li><li><strong><code>levelIid</code></strong> <strong>(String</strong>)  <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" />  : <em>Neighbour Instance Identifier</em></li><li><strong><code>levelUid</code></strong> <strong>(Int</strong>) : <em><strong>WARNING</strong>: this deprecated value will be <em>removed</em> completely on version 1.2.0+</em> ** <em>Replaced by: <code>levelIid</code></em></li></ul></td></tr>
+<tr><td><code>bgRelPath</code><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td>The <em>optional</em> relative path to the level background image.</td></tr>
+<tr><td><code>externalRelPath</code><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td>This value is not null if the project option &quot;<em>Save levels separately</em>&quot; is enabled. In this case, this <strong>relative</strong> path points to the level Json file.</td></tr>
+<tr><td><code>fieldInstances</code><br/> <img src="https://img.shields.io/badge/Changed_0.8.0-gray.svg" alt="Generic badge" /></td><td>Array of <a href="#ldtk-FieldInstanceJson">Field instance</a></td><td>An array containing this level custom field values.</td></tr>
+<tr><td><code>identifier</code></td><td>String</td><td>User defined unique identifier</td></tr>
+<tr><td><code>iid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>Unique instance identifier</td></tr>
+<tr><td><code>layerInstances</code><br/> <img src="https://img.shields.io/badge/Changed_0.7.0-gray.svg" alt="Generic badge" /></td><td>Array of <a href="#ldtk-LayerInstanceJson">Layer instance</a> <em>(can be <code>null</code>)</em></td><td>An array containing all Layer instances. <strong>IMPORTANT</strong>: if the project option &quot;<em>Save levels separately</em>&quot; is enabled, this field will be <code>null</code>.<br/>		This array is <strong>sorted in display order</strong>: the 1st layer is the top-most and the last is behind.</td></tr>
+<tr><td><code>pxHei</code></td><td>Int</td><td>Height of the level in pixels</td></tr>
+<tr><td><code>pxWid</code></td><td>Int</td><td>Width of the level in pixels</td></tr>
+<tr><td><code>uid</code></td><td>Int</td><td>Unique Int identifier</td></tr>
+<tr><td><code>worldDepth</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Index that represents the &quot;depth&quot; of the level in the world. Default is 0, greater means &quot;above&quot;, lower means &quot;below&quot;.<br/>		This value is mostly used for display only and is intended to make stacking of levels easier to manage.</td></tr>
+<tr><td><code>worldX</code><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>World X coordinate in pixels.<br/>		Only relevant for world layouts where level spatial positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the value is always -1 here.</td></tr>
+<tr><td><code>worldY</code><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>World Y coordinate in pixels.<br/>		Only relevant for world layouts where level spatial positioning is manual (ie. GridVania, Free). For Horizontal and Vertical layouts, the value is always -1 here.</td></tr>
+<tr><td><code>_smartColor</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String<br/><small class="color"> <em>Hex color &quot;#rrggbb&quot;</em> </small></td><td>The &quot;guessed&quot; color for this level in the editor, decided using either the background color or an existing custom field.</td></tr>
+<tr><td><code>bgColor</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em><br/><small class="color"> <em>Hex color &quot;#rrggbb&quot;</em> </small></td><td>Background color of the level. If <code>null</code>, the project <code>defaultLevelBgColor</code> should be used.</td></tr>
+<tr><td><code>bgPivotX</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td>Background image X pivot (0-1)</td></tr>
+<tr><td><code>bgPivotY</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td>Background image Y pivot (0-1)</td></tr>
+<tr><td><code>bgPos</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Enum <em>(can be <code>null</code>)</em></td><td>An enum defining the way the background image (if any) is positioned on the level. See <code>_bgPos</code> for resulting position info.<br/> Possible values: &lt;<code>null</code>&gt;, <code>Unscaled</code>, <code>Contain</code>, <code>Cover</code>, <code>CoverDirty</code></td></tr>
+<tr><td><code>useAutoIdentifier</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>If TRUE, the level identifier will always automatically use the naming pattern as defined in <code>Project.levelNamePattern</code>. Becomes FALSE if the identifier is manually modified by user.</td></tr>
+</tbody></table>
+<p><a id="ldtk-LayerInstanceJson" name="ldtk-LayerInstanceJson"></a></p>
+<h2 id="layer-instance"><a class="header" href="#layer-instance">Layer instance</a></h2>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_cHei</code></td><td>Int</td><td>Grid-based height</td></tr>
+<tr><td><code>_cWid</code></td><td>Int</td><td>Grid-based width</td></tr>
+<tr><td><code>_gridSize</code></td><td>Int</td><td>Grid size</td></tr>
+<tr><td><code>_identifier</code></td><td>String</td><td>Layer definition identifier</td></tr>
+<tr><td><code>_opacity</code><br/> <img src="https://img.shields.io/badge/Added_0.4.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td>Layer opacity as Float [0-1]</td></tr>
+<tr><td><code>_pxTotalOffsetX</code><br/> <img src="https://img.shields.io/badge/Added_0.5.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Total layer X pixel offset, including both instance and definition offsets.</td></tr>
+<tr><td><code>_pxTotalOffsetY</code><br/> <img src="https://img.shields.io/badge/Added_0.5.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Total layer Y pixel offset, including both instance and definition offsets.</td></tr>
+<tr><td><code>_tilesetDefUid</code><br/><sup class="only">Only <em>Tile layers, Auto-layers</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td>The definition UID of corresponding Tileset, if any.</td></tr>
+<tr><td><code>_tilesetRelPath</code><br/><sup class="only">Only <em>Tile layers, Auto-layers</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td>The relative path to corresponding Tileset, if any.</td></tr>
+<tr><td><code>_type</code></td><td>String</td><td>Layer type (possible values: IntGrid, Entities, Tiles or AutoLayer)</td></tr>
+<tr><td><code>autoLayerTiles</code><br/><sup class="only">Only <em>Auto-layers</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.4.0-gray.svg" alt="Generic badge" /></td><td>Array of <a href="#ldtk-Tile">Tile instance</a></td><td>An array containing all tiles generated by Auto-layer rules. The array is already sorted in display order (ie. 1st tile is beneath 2nd, which is beneath 3rd etc.).<br/><br/>		Note: if multiple tiles are stacked in the same cell as the result of different rules, all tiles behind opaque ones will be discarded.</td></tr>
+<tr><td><code>entityInstances</code><br/><sup class="only">Only <em>Entity layers</em></sup></td><td>Array of <a href="#ldtk-EntityInstanceJson">Entity instance</a></td><td></td></tr>
+<tr><td><code>gridTiles</code><br/><sup class="only">Only <em>Tile layers</em></sup></td><td>Array of <a href="#ldtk-Tile">Tile instance</a></td><td></td></tr>
+<tr><td><code>iid</code></td><td>String</td><td>Unique layer instance identifier</td></tr>
+<tr><td><code>intGridCsv</code><br/><sup class="only">Only <em>IntGrid layers</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Array of Int</td><td>A list of all values in the IntGrid layer, stored in CSV format (Comma Separated Values).<br/>		Order is from left to right, and top to bottom (ie. first row from left to right, followed by second row, etc).<br/>		<code>0</code> means &quot;empty cell&quot; and IntGrid values start at 1.<br/>		The array size is <code>_cWid</code> x <code>_cHei</code> cells.</td></tr>
+<tr><td><code>layerDefUid</code></td><td>Int</td><td>Reference the Layer definition UID</td></tr>
+<tr><td><code>levelId</code></td><td>Int</td><td>Reference to the UID of the level containing this layer instance</td></tr>
+<tr><td><code>overrideTilesetUid</code><br/><sup class="only">Only <em>Tile layers</em></sup></td><td>Int <em>(can be <code>null</code>)</em></td><td>This layer can use another tileset by overriding the tileset UID here.</td></tr>
+<tr><td><code>pxOffsetX</code><br/> <img src="https://img.shields.io/badge/Changed_0.5.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>X offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to the <code>LayerDef</code> optional offset, see <code>_pxTotalOffsetX</code>)</td></tr>
+<tr><td><code>pxOffsetY</code><br/> <img src="https://img.shields.io/badge/Changed_0.5.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Y offset in pixels to render this layer, usually 0 (IMPORTANT: this should be added to the <code>LayerDef</code> optional offset, see <code>_pxTotalOffsetY</code>)</td></tr>
+<tr><td><code>visible</code><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>Layer instance visibility</td></tr>
+<tr><td><code>optionalRules</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Array of Int</td><td>An Array containing the UIDs of optional rules that were enabled in this specific layer instance.</td></tr>
+<tr><td><code>seed</code><br/><sup class="only">Only <em>Auto-layers</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Random seed used for Auto-Layers rendering</td></tr>
+<tr><td><del><code>intGrid</code></del><br/><sup class="only">Only <em>IntGrid layers</em></sup><br/><sup class="deprecated"><em>DEPRECATED!</em></sup></td><td>Array of Object <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this deprecated value is no longer exported since version 1.0.0<br/> <br/> Replaced by: <code>intGridCsv</code></td></tr>
+</tbody></table>
+<p><a id="ldtk-Tile" name="ldtk-Tile"></a></p>
+<h2 id="tile-instance"><a class="header" href="#tile-instance">Tile instance</a></h2>
+<p>This structure represents a single tile from a given Tileset.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>f</code></td><td>Int</td><td>&quot;Flip bits&quot;, a 2-bits integer to represent the mirror transformations of the tile.<br/>		 - Bit 0 = X flip<br/>		 - Bit 1 = Y flip<br/>		 Examples: f=0 (no flip), f=1 (X flip only), f=2 (Y flip only), f=3 (both flips)</td></tr>
+<tr><td><code>px</code><br/> <img src="https://img.shields.io/badge/Changed_0.5.0-gray.svg" alt="Generic badge" /></td><td>Array of Int</td><td>Pixel coordinates of the tile in the <strong>layer</strong> (<code>[x,y]</code> format). Don't forget optional layer offsets, if they exist!</td></tr>
+<tr><td><code>src</code></td><td>Array of Int</td><td>Pixel coordinates of the tile in the <strong>tileset</strong> (<code>[x,y]</code> format)</td></tr>
+<tr><td><code>t</code><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>The <em>Tile ID</em> in the corresponding tileset.</td></tr>
+<tr><td><code>d</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Changed_0.6.0-gray.svg" alt="Generic badge" /></td><td>Array of Int</td><td>Internal data used by the editor.<br/>		For auto-layer tiles: <code>[ruleId, coordId]</code>.<br/>		For tile-layer tiles: <code>[coordId]</code>.</td></tr>
+</tbody></table>
+<p><a id="ldtk-EntityInstanceJson" name="ldtk-EntityInstanceJson"></a></p>
+<h2 id="entity-instance"><a class="header" href="#entity-instance">Entity instance</a></h2>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_grid</code><br/> <img src="https://img.shields.io/badge/Changed_0.4.0-gray.svg" alt="Generic badge" /></td><td>Array of Int</td><td>Grid-based coordinates (<code>[x,y]</code> format)</td></tr>
+<tr><td><code>_identifier</code></td><td>String</td><td>Entity definition identifier</td></tr>
+<tr><td><code>_pivot</code><br/> <img src="https://img.shields.io/badge/Added_0.7.0-gray.svg" alt="Generic badge" /></td><td>Array of Float</td><td>Pivot coordinates  (<code>[x,y]</code> format, values are from 0 to 1) of the Entity</td></tr>
+<tr><td><code>_smartColor</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>The entity &quot;smart&quot; color, guessed from either Entity definition, or one its field instances.</td></tr>
+<tr><td><code>_tags</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of String</td><td>Array of tags defined in this Entity definition</td></tr>
+<tr><td><code>_tile</code><br/> <img src="https://img.shields.io/badge/Added_0.4.0-gray.svg" alt="Generic badge" /> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td><a href="#ldtk-TilesetRect">Tileset rectangle</a> <em>(can be <code>null</code>)</em></td><td>Optional TilesetRect used to display this entity (it could either be the default Entity tile, or some tile provided by a field value, like an Enum).</td></tr>
+<tr><td><code>defUid</code></td><td>Int</td><td>Reference of the <strong>Entity definition</strong> UID</td></tr>
+<tr><td><code>fieldInstances</code></td><td>Array of <a href="#ldtk-FieldInstanceJson">Field instance</a></td><td>An array of all custom fields and their values.</td></tr>
+<tr><td><code>height</code><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Entity height in pixels. For non-resizable entities, it will be the same as Entity definition.</td></tr>
+<tr><td><code>iid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>Unique instance identifier</td></tr>
+<tr><td><code>px</code><br/> <img src="https://img.shields.io/badge/Changed_0.4.0-gray.svg" alt="Generic badge" /></td><td>Array of Int</td><td>Pixel coordinates (<code>[x,y]</code> format) in current level coordinate space. Don't forget optional layer offsets, if they exist!</td></tr>
+<tr><td><code>width</code><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Entity width in pixels. For non-resizable entities, it will be the same as Entity definition.</td></tr>
+</tbody></table>
+<p><a id="ldtk-FieldInstanceJson" name="ldtk-FieldInstanceJson"></a></p>
+<h2 id="field-instance"><a class="header" href="#field-instance">Field instance</a></h2>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_identifier</code></td><td>String</td><td>Field definition identifier</td></tr>
+<tr><td><code>_tile</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td><a href="#ldtk-TilesetRect">Tileset rectangle</a> <em>(can be <code>null</code>)</em></td><td>Optional TilesetRect used to display this field (this can be the field own Tile, or some other Tile guessed from the value, like an Enum).</td></tr>
+<tr><td><code>_type</code></td><td>String</td><td>Type of the field, such as <code>Int</code>, <code>Float</code>, <code>String</code>, <code>Enum(my_enum_name)</code>, <code>Bool</code>, etc.<br/>		NOTE: if you enable the advanced option <strong>Use Multilines type</strong>, you will have &quot;<em>Multilines</em>&quot; instead of &quot;<em>String</em>&quot; when relevant.</td></tr>
+<tr><td><code>_value</code></td><td>Various possible types</td><td>Actual value of the field instance. The value type varies, depending on <code>_type</code>:<br/>		 - For <strong>classic types</strong> (ie. Integer, Float, Boolean, String, Text and FilePath), you just get the actual value with the expected type.<br/>		 - For <strong>Color</strong>, the value is an hexadecimal string using &quot;#rrggbb&quot; format.<br/>		 - For <strong>Enum</strong>, the value is a String representing the selected enum value.<br/>		 - For <strong>Point</strong>, the value is a <a href="#ldtk-GridPoint">GridPoint</a> object.<br/>		 - For <strong>Tile</strong>, the value is a <a href="#ldtk-TilesetRect">TilesetRect</a> object.<br/>		 - For <strong>EntityRef</strong>, the value is an <a href="#ldtk-EntityReferenceInfos">EntityReferenceInfos</a> object.<br/><br/>		If the field is an array, then this <code>_value</code> will also be a JSON array.</td></tr>
+<tr><td><code>defUid</code></td><td>Int</td><td>Reference of the <strong>Field definition</strong> UID</td></tr>
+<tr><td><code>realEditorValues</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Array of Enum <em>(can be <code>null</code>)</em></td><td>Editor internal raw values</td></tr>
+</tbody></table>
+<p><a id="ldtk-EntityReferenceInfos" name="ldtk-EntityReferenceInfos"></a></p>
+<h3 id="field-instance-entity-reference"><a class="header" href="#field-instance-entity-reference">Field instance entity reference</a></h3>
+<p>This object is used in Field Instances to describe an EntityRef value.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>entityIid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>IID of the refered EntityInstance</td></tr>
+<tr><td><code>layerIid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>IID of the LayerInstance containing the refered EntityInstance</td></tr>
+<tr><td><code>levelIid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>IID of the Level containing the refered EntityInstance</td></tr>
+<tr><td><code>worldIid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String</td><td>IID of the World containing the refered EntityInstance</td></tr>
+</tbody></table>
+<p><a id="ldtk-GridPoint" name="ldtk-GridPoint"></a></p>
+<h3 id="field-instance-grid-point"><a class="header" href="#field-instance-grid-point">Field instance grid point</a></h3>
+<p>This object is just a grid-based coordinate used in Field values.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>cx</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>X grid-based coordinate</td></tr>
+<tr><td><code>cy</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Y grid-based coordinate</td></tr>
+</tbody></table>
+<p><a id="ldtk-DefinitionsJson" name="ldtk-DefinitionsJson"></a></p>
+<h1 id="definitions"><a class="header" href="#definitions">Definitions</a></h1>
+<p>If you're writing your own LDtk importer, you should probably just ignore <em>most</em> stuff in the <code>defs</code> section, as it contains data that are mostly important to the editor. To keep you away from the <code>defs</code> section and avoid some unnecessary JSON parsing, important data from definitions is often duplicated in fields prefixed with a double underscore (eg. <code>_identifier</code> or <code>_type</code>).</p>
+<p>The 2 only definition types you might need here are <strong>Tilesets</strong> and <strong>Enums</strong>.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>entities</code></td><td>Array of <a href="#ldtk-EntityDefJson">Entity definition</a></td><td>All entities definitions, including their custom fields</td></tr>
+<tr><td><code>enums</code></td><td>Array of <a href="#ldtk-EnumDefJson">Enum definition</a></td><td>All internal enums</td></tr>
+<tr><td><code>externalEnums</code></td><td>Array of <a href="#ldtk-EnumDefJson">Enum definition</a></td><td>Note: external enums are exactly the same as <code>enums</code>, except they have a <code>relPath</code> to point to an external source file.</td></tr>
+<tr><td><code>layers</code></td><td>Array of <a href="#ldtk-LayerDefJson">Layer definition</a></td><td>All layer definitions</td></tr>
+<tr><td><code>levelFields</code><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Array of <a href="#ldtk-FieldDefJson">Field definition</a></td><td>All custom fields available to all levels.</td></tr>
+<tr><td><code>tilesets</code></td><td>Array of <a href="#ldtk-TilesetDefJson">Tileset definition</a></td><td>All tilesets</td></tr>
+</tbody></table>
+<p><a id="ldtk-LayerDefJson" name="ldtk-LayerDefJson"></a></p>
+<h2 id="layer-definition"><a class="header" href="#layer-definition">Layer definition</a></h2>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_type</code></td><td>String</td><td>Type of the layer (<em>IntGrid, Entities, Tiles or AutoLayer</em>)</td></tr>
+<tr><td><code>autoSourceLayerDefUid</code><br/><sup class="only">Only <em>Auto-layers</em></sup></td><td>Int <em>(can be <code>null</code>)</em></td><td></td></tr>
+<tr><td><code>displayOpacity</code></td><td>Float</td><td>Opacity of the layer (0 to 1.0)</td></tr>
+<tr><td><code>gridSize</code></td><td>Int</td><td>Width and height of the grid in pixels</td></tr>
+<tr><td><code>identifier</code></td><td>String</td><td>User defined unique identifier</td></tr>
+<tr><td><code>intGridValues</code><br/><sup class="only">Only <em>IntGrid layer</em></sup><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of Object</td><td>An array that defines extra optional info for each IntGrid value.<br/>		WARNING: the array order is not related to actual IntGrid values! As user can re-order IntGrid values freely, you may value &quot;2&quot; before value &quot;1&quot; in this array.<br/> This object contains the following fields:<br/> <ul><li><strong><code>color</code></strong> <strong>(String</strong>) <small class="color"> <em>Hex color &quot;#rrggbb&quot;</em> </small></li><li><strong><code>identifier</code></strong> <strong>(String <em>(can be <code>null</code>)</em></strong>) : <em>User defined unique identifier</em></li><li><strong><code>value</code></strong> <strong>(Int</strong>)  <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" />  : <em>The IntGrid value itself</em></li></ul></td></tr>
+<tr><td><code>parallaxFactorX</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td>Parallax horizontal factor (from -1 to 1, defaults to 0) which affects the scrolling speed of this layer, creating a fake 3D (parallax) effect.</td></tr>
+<tr><td><code>parallaxFactorY</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td>Parallax vertical factor (from -1 to 1, defaults to 0) which affects the scrolling speed of this layer, creating a fake 3D (parallax) effect.</td></tr>
+<tr><td><code>parallaxScaling</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>If true (default), a layer with a parallax factor will also be scaled up/down accordingly.</td></tr>
+<tr><td><code>pxOffsetX</code><br/> <img src="https://img.shields.io/badge/Added_0.5.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>X offset of the layer, in pixels (IMPORTANT: this should be added to the <code>LayerInstance</code> optional offset)</td></tr>
+<tr><td><code>pxOffsetY</code><br/> <img src="https://img.shields.io/badge/Added_0.5.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Y offset of the layer, in pixels (IMPORTANT: this should be added to the <code>LayerInstance</code> optional offset)</td></tr>
+<tr><td><code>tilesetDefUid</code><br/><sup class="only">Only <em>Tile layers, Auto-layers</em></sup><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td>Reference to the default Tileset UID being used by this layer definition.<br/>		<strong>WARNING</strong>: some layer <em>instances</em> might use a different tileset. So most of the time, you should probably use the <code>_tilesetDefUid</code> value found in layer instances.<br/>		Note: since version 1.0.0, the old <code>autoTilesetDefUid</code> was removed and merged into this value.</td></tr>
+<tr><td><code>uid</code></td><td>Int</td><td>Unique Int identifier</td></tr>
+<tr><td><code>autoRuleGroups</code><br/><sup class="only">Only <em>Auto-layers</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Array of Object</td><td>Contains all the auto-layer rule definitions.<br/> This object contains the following fields:<br/> <ul><li><strong><code>active</code></strong> <strong>(Bool</strong>)</li><li><del>collapsed</del> <strong>(Bool</strong>)    <em>This field was removed in 1.0.0 and should no longer be used.</em></li><li><strong><code>isOptional</code></strong> <strong>(Bool</strong>)  <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /> </li><li><strong><code>name</code></strong> <strong>(String</strong>)</li><li><strong><code>rules</code></strong> <strong>(Array of <a href="#ldtk-AutoRuleDef">Auto-layer rule definition</a></strong>)</li><li><strong><code>uid</code></strong> <strong>(Int</strong>)</li></ul></td></tr>
+<tr><td><code>excludedTags</code><br/><sup class="only">Only <em>Entity layer</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Array of String</td><td>An array of tags to forbid some Entities in this layer</td></tr>
+<tr><td><code>guideGridHei</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Height of the optional &quot;guide&quot; grid in pixels</td></tr>
+<tr><td><code>guideGridWid</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Width of the optional &quot;guide&quot; grid in pixels</td></tr>
+<tr><td><code>hideFieldsWhenInactive</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td></td></tr>
+<tr><td><code>hideInList</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>Hide the layer from the list on the side of the editor view.</td></tr>
+<tr><td><code>inactiveOpacity</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td>Alpha of this layer when it is not the active one.</td></tr>
+<tr><td><code>requiredTags</code><br/><sup class="only">Only <em>Entity layer</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Array of String</td><td>An array of tags to filter Entities that can be added to this layer</td></tr>
+<tr><td><code>tilePivotX</code><br/><sup class="only">Only <em>Tile layers</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td>If the tiles are smaller or larger than the layer grid, the pivot value will be used to position the tile relatively its grid cell.</td></tr>
+<tr><td><code>tilePivotY</code><br/><sup class="only">Only <em>Tile layers</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td>If the tiles are smaller or larger than the layer grid, the pivot value will be used to position the tile relatively its grid cell.</td></tr>
+<tr><td><code>type</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Enum</td><td>Type of the layer as Haxe Enum<br/> Possible values: <code>IntGrid</code>, <code>Entities</code>, <code>Tiles</code>, <code>AutoLayer</code></td></tr>
+<tr><td><del><code>autoTilesetDefUid</code></del><br/><sup class="only">Only <em>Auto-layers</em></sup><br/><sup class="deprecated"><em>DEPRECATED!</em></sup></td><td>Int <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this deprecated value will be <em>removed</em> completely on version 1.2.0+<br/> <br/> Replaced by: <code>tilesetDefUid</code></td></tr>
+</tbody></table>
+<p><a id="ldtk-AutoRuleDef" name="ldtk-AutoRuleDef"></a></p>
+<h3 id="auto-layer-rule-definition"><a class="header" href="#auto-layer-rule-definition">Auto-layer rule definition</a></h3>
+<p>This complex section isn't meant to be used by game devs at all, as these rules are completely resolved internally by the editor before any saving. You should just ignore this part.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>active</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>If FALSE, the rule effect isn't applied, and no tiles are generated.</td></tr>
+<tr><td><code>breakOnMatch</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>When TRUE, the rule will prevent other rules to be applied in the same cell if it matches (TRUE by default).</td></tr>
+<tr><td><code>chance</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td>Chances for this rule to be applied (0 to 1)</td></tr>
+<tr><td><code>checker</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Enum</td><td>Checker mode<br/> Possible values: <code>None</code>, <code>Horizontal</code>, <code>Vertical</code></td></tr>
+<tr><td><code>flipX</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>If TRUE, allow rule to be matched by flipping its pattern horizontally</td></tr>
+<tr><td><code>flipY</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>If TRUE, allow rule to be matched by flipping its pattern vertically</td></tr>
+<tr><td><code>outOfBoundsValue</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td>Default IntGrid value when checking cells outside of level bounds</td></tr>
+<tr><td><code>pattern</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Array of Int</td><td>Rule pattern (size x size)</td></tr>
+<tr><td><code>perlinActive</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>If TRUE, enable Perlin filtering to only apply rule on specific random area</td></tr>
+<tr><td><code>perlinOctaves</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td></td></tr>
+<tr><td><code>perlinScale</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td></td></tr>
+<tr><td><code>perlinSeed</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td></td></tr>
+<tr><td><code>pivotX</code><br/><sup class="only">Only <em>'Stamp' tile mode</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td>X pivot of a tile stamp (0-1)</td></tr>
+<tr><td><code>pivotY</code><br/><sup class="only">Only <em>'Stamp' tile mode</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float</td><td>Y pivot of a tile stamp (0-1)</td></tr>
+<tr><td><code>size</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Pattern width &amp; height. Should only be 1,3,5 or 7.</td></tr>
+<tr><td><code>tileIds</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Array of Int</td><td>Array of all the tile IDs. They are used randomly or as stamps, based on <code>tileMode</code> value.</td></tr>
+<tr><td><code>tileMode</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Enum</td><td>Defines how tileIds array is used<br/> Possible values: <code>Single</code>, <code>Stamp</code></td></tr>
+<tr><td><code>uid</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Unique Int identifier</td></tr>
+<tr><td><code>xModulo</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>X cell coord modulo</td></tr>
+<tr><td><code>xOffset</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>X cell start offset</td></tr>
+<tr><td><code>yModulo</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Y cell coord modulo</td></tr>
+<tr><td><code>yOffset</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Y cell start offset</td></tr>
+</tbody></table>
+<p><a id="ldtk-EntityDefJson" name="ldtk-EntityDefJson"></a></p>
+<h2 id="entity-definition"><a class="header" href="#entity-definition">Entity definition</a></h2>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>color</code></td><td>String<br/><small class="color"> <em>Hex color &quot;#rrggbb&quot;</em> </small></td><td>Base entity color</td></tr>
+<tr><td><code>height</code></td><td>Int</td><td>Pixel height</td></tr>
+<tr><td><code>identifier</code></td><td>String</td><td>User defined unique identifier</td></tr>
+<tr><td><code>nineSliceBorders</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of Int</td><td>An array of 4 dimensions for the up/right/down/left borders (in this order) when using 9-slice mode for <code>tileRenderMode</code>.<br/>		If the tileRenderMode is not NineSlice, then this array is empty.<br/>		See: https://en.wikipedia.org/wiki/9-slice_scaling</td></tr>
+<tr><td><code>pivotX</code></td><td>Float</td><td>Pivot X coordinate (from 0 to 1.0)</td></tr>
+<tr><td><code>pivotY</code></td><td>Float</td><td>Pivot Y coordinate (from 0 to 1.0)</td></tr>
+<tr><td><code>tileRect</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td><a href="#ldtk-TilesetRect">Tileset rectangle</a> <em>(can be <code>null</code>)</em></td><td>An object representing a rectangle from an existing Tileset</td></tr>
+<tr><td><code>tileRenderMode</code><br/> <img src="https://img.shields.io/badge/Changed_0.8.1-gray.svg" alt="Generic badge" /></td><td>Enum</td><td>An enum describing how the the Entity tile is rendered inside the Entity bounds.<br/> Possible values: <code>Cover</code>, <code>FitInside</code>, <code>Repeat</code>, <code>Stretch</code>, <code>FullSizeCropped</code>, <code>FullSizeUncropped</code>, <code>NineSlice</code></td></tr>
+<tr><td><code>tilesetId</code></td><td>Int <em>(can be <code>null</code>)</em></td><td>Tileset ID used for optional tile display</td></tr>
+<tr><td><code>uid</code></td><td>Int</td><td>Unique Int identifier</td></tr>
+<tr><td><code>width</code></td><td>Int</td><td>Pixel width</td></tr>
+<tr><td><code>fieldDefs</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Array of <a href="#ldtk-FieldDefJson">Field definition</a></td><td>Array of field definitions</td></tr>
+<tr><td><code>fillOpacity</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td></td></tr>
+<tr><td><code>hollow</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td></td></tr>
+<tr><td><code>keepAspectRatio</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>Only applies to entities resizable on both X/Y. If TRUE, the entity instance width/height will keep the same aspect ratio as the definition.</td></tr>
+<tr><td><code>limitBehavior</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Enum</td><td>Possible values: <code>DiscardOldOnes</code>, <code>PreventAdding</code>, <code>MoveLastOne</code></td></tr>
+<tr><td><code>limitScope</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Enum</td><td>If TRUE, the maxCount is a &quot;per world&quot; limit, if FALSE, it's a &quot;per level&quot;.<br/> Possible values: <code>PerLayer</code>, <code>PerLevel</code>, <code>PerWorld</code></td></tr>
+<tr><td><code>lineOpacity</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td></td></tr>
+<tr><td><code>maxCount</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Changed_0.8.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Max instances count</td></tr>
+<tr><td><code>renderMode</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Enum</td><td>Possible values: <code>Rectangle</code>, <code>Ellipse</code>, <code>Tile</code>, <code>Cross</code></td></tr>
+<tr><td><code>resizableX</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>If TRUE, the entity instances will be resizable horizontally</td></tr>
+<tr><td><code>resizableY</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>If TRUE, the entity instances will be resizable vertically</td></tr>
+<tr><td><code>showName</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.4.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>Display entity name in editor</td></tr>
+<tr><td><code>tags</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Array of String</td><td>An array of strings that classifies this entity</td></tr>
+<tr><td><code>tileOpacity</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Float</td><td></td></tr>
+<tr><td><del><code>tileId</code></del><br/><sup class="deprecated"><em>DEPRECATED!</em></sup></td><td>Int <em>(can be <code>null</code>)</em></td><td><strong>WARNING</strong>: this deprecated value will be <em>removed</em> completely on version 1.2.0+<br/> <br/> Replaced by: <code>tileRect</code></td></tr>
+</tbody></table>
+<p><a id="ldtk-FieldDefJson" name="ldtk-FieldDefJson"></a></p>
+<h3 id="field-definition"><a class="header" href="#field-definition">Field definition</a></h3>
+<p>This section is mostly only intended for the LDtk editor app itself. You can safely ignore it.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_type</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>String</td><td>Human readable value type. Possible values: <code>Int, Float, String, Bool, Color, ExternEnum.XXX, LocalEnum.XXX, Point, FilePath</code>.<br/>		If the field is an array, this field will look like <code>Array&lt;...&gt;</code> (eg. <code>Array&lt;Int&gt;</code>, <code>Array&lt;Point&gt;</code> etc.)<br/>		NOTE: if you enable the advanced option <strong>Use Multilines type</strong>, you will have &quot;<em>Multilines</em>&quot; instead of &quot;<em>String</em>&quot; when relevant.</td></tr>
+<tr><td><code>acceptFileTypes</code><br/><sup class="only">Only <em>FilePath</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Array of String <em>(can be <code>null</code>)</em></td><td>Optional list of accepted file extensions for FilePath value type. Includes the dot: <code>.ext</code></td></tr>
+<tr><td><code>arrayMaxLength</code><br/><sup class="only">Only <em>Array</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int <em>(can be <code>null</code>)</em></td><td>Array max length</td></tr>
+<tr><td><code>arrayMinLength</code><br/><sup class="only">Only <em>Array</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int <em>(can be <code>null</code>)</em></td><td>Array min length</td></tr>
+<tr><td><code>canBeNull</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>TRUE if the value can be null. For arrays, TRUE means it can contain null values (exception: array of Points can't have null values).</td></tr>
+<tr><td><code>defaultOverride</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Enum <em>(can be <code>null</code>)</em></td><td>Default value if selected value is null or invalid.</td></tr>
+<tr><td><code>identifier</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>String</td><td>User defined unique identifier</td></tr>
+<tr><td><code>isArray</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td>TRUE if the value is an array of multiple values</td></tr>
+<tr><td><code>max</code><br/><sup class="only">Only <em>Int, Float</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float <em>(can be <code>null</code>)</em></td><td>Max limit for value, if applicable</td></tr>
+<tr><td><code>min</code><br/><sup class="only">Only <em>Int, Float</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Float <em>(can be <code>null</code>)</em></td><td>Min limit for value, if applicable</td></tr>
+<tr><td><code>regex</code><br/><sup class="only">Only <em>String</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.6.2-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td>Optional regular expression that needs to be matched to accept values. Expected format: <code>/some_reg_ex/g</code>, with optional &quot;i&quot; flag.</td></tr>
+<tr><td><code>type</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>String</td><td>Internal enum representing the possible field types. Possible values: F_Int, F_Float, F_String, F_Text, F_Bool, F_Color, F_Enum(...), F_Point, F_Path, F_EntityRef, F_Tile</td></tr>
+<tr><td><code>uid</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Int</td><td>Unique Int identifier</td></tr>
+<tr><td><code>allowOutOfLevelRef</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td></td></tr>
+<tr><td><code>allowedRefTags</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of String</td><td></td></tr>
+<tr><td><code>allowedRefs</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Enum</td><td>Possible values: <code>Any</code>, <code>OnlySame</code>, <code>OnlyTags</code></td></tr>
+<tr><td><code>autoChainRef</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td></td></tr>
+<tr><td><code>editorAlwaysShow</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Bool</td><td></td></tr>
+<tr><td><code>editorCutLongValues</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.8.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td></td></tr>
+<tr><td><code>editorDisplayMode</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Changed_1.0.0-gray.svg" alt="Generic badge" /></td><td>Enum</td><td>Possible values: <code>Hidden</code>, <code>ValueOnly</code>, <code>NameAndValue</code>, <code>EntityTile</code>, <code>Points</code>, <code>PointStar</code>, <code>PointPath</code>, <code>PointPathLoop</code>, <code>RadiusPx</code>, <code>RadiusGrid</code>, <code>ArrayCountWithLabel</code>, <code>ArrayCountNoLabel</code>, <code>RefLinkBetweenPivots</code>, <code>RefLinkBetweenCenters</code></td></tr>
+<tr><td><code>editorDisplayPos</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Enum</td><td>Possible values: <code>Above</code>, <code>Center</code>, <code>Beneath</code></td></tr>
+<tr><td><code>editorTextPrefix</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td></td></tr>
+<tr><td><code>editorTextSuffix</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>String <em>(can be <code>null</code>)</em></td><td></td></tr>
+<tr><td><code>symmetricalRef</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td></td></tr>
+<tr><td><code>textLanguageMode</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Changed_0.9.3-gray.svg" alt="Generic badge" /></td><td>Enum <em>(can be <code>null</code>)</em></td><td>Possible values: &lt;<code>null</code>&gt;, <code>LangPython</code>, <code>LangRuby</code>, <code>LangJS</code>, <code>LangLua</code>, <code>LangC</code>, <code>LangHaxe</code>, <code>LangMarkdown</code>, <code>LangJson</code>, <code>LangXml</code>, <code>LangLog</code></td></tr>
+<tr><td><code>tilesetUid</code><br/><sup class="only">Only <em>Tile</em></sup><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td>UID of the tileset used for a Tile</td></tr>
+<tr><td><code>useForSmartColor</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Bool</td><td>If TRUE, the color associated with this field will override the Entity or Level default color in the editor UI. For Enum fields, this would be the color associated to their values.</td></tr>
+</tbody></table>
+<p><a id="ldtk-TilesetRect" name="ldtk-TilesetRect"></a></p>
+<h3 id="tileset-rectangle"><a class="header" href="#tileset-rectangle">Tileset rectangle</a></h3>
+<p>This object represents a custom sub rectangle in a Tileset image.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>h</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Height in pixels</td></tr>
+<tr><td><code>tilesetUid</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>UID of the tileset</td></tr>
+<tr><td><code>w</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Width in pixels</td></tr>
+<tr><td><code>x</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>X pixels coordinate of the top-left corner in the Tileset image</td></tr>
+<tr><td><code>y</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Y pixels coordinate of the top-left corner in the Tileset image</td></tr>
+</tbody></table>
+<p><a id="ldtk-TilesetDefJson" name="ldtk-TilesetDefJson"></a></p>
+<h2 id="tileset-definition"><a class="header" href="#tileset-definition">Tileset definition</a></h2>
+<p>The <code>Tileset</code> definition is the most important part among project definitions. It contains some extra informations about each integrated tileset. If you only had to parse one definition section, that would be the one.</p>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_cHei</code><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Grid-based height</td></tr>
+<tr><td><code>_cWid</code><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Grid-based width</td></tr>
+<tr><td><code>customData</code><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Array of Object</td><td>An array of custom tile metadata<br/> This object contains the following fields:<br/> <ul><li><strong><code>data</code></strong> <strong>(String</strong>)</li><li><strong><code>tileId</code></strong> <strong>(Int</strong>)</li></ul></td></tr>
+<tr><td><code>embedAtlas</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Enum <em>(can be <code>null</code>)</em></td><td>If this value is set, then it means that this atlas uses an internal LDtk atlas image instead of a loaded one.<br/> Possible values: &lt;<code>null</code>&gt;, <code>LdtkIcons</code></td></tr>
+<tr><td><code>enumTags</code><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Array of Object</td><td>Tileset tags using Enum values specified by <code>tagsSourceEnumId</code>. This array contains 1 element per Enum value, which contains an array of all Tile IDs that are tagged with it.<br/> This object contains the following fields:<br/> <ul><li><strong><code>enumValueId</code></strong> <strong>(String</strong>)</li><li><strong><code>tileIds</code></strong> <strong>(Array of Int</strong>)</li></ul></td></tr>
+<tr><td><code>identifier</code></td><td>String</td><td>User defined unique identifier</td></tr>
+<tr><td><code>padding</code></td><td>Int</td><td>Distance in pixels from image borders</td></tr>
+<tr><td><code>pxHei</code></td><td>Int</td><td>Image height in pixels</td></tr>
+<tr><td><code>pxWid</code></td><td>Int</td><td>Image width in pixels</td></tr>
+<tr><td><code>relPath</code></td><td>String <em>(can be <code>null</code>)</em></td><td>Path to the source file, relative to the current project JSON file<br/>		It can be null if no image was provided, or when using an embed atlas.</td></tr>
+<tr><td><code>spacing</code></td><td>Int</td><td>Space in pixels between all tiles</td></tr>
+<tr><td><code>tags</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of String</td><td>An array of user-defined tags to organize the Tilesets</td></tr>
+<tr><td><code>tagsSourceEnumUid</code><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Int <em>(can be <code>null</code>)</em></td><td>Optional Enum definition UID used for this tileset meta-data</td></tr>
+<tr><td><code>tileGridSize</code></td><td>Int</td><td></td></tr>
+<tr><td><code>uid</code></td><td>Int</td><td>Unique Intidentifier</td></tr>
+<tr><td><code>cachedPixelData</code><br/><sup class="internal"><em>Only used by editor</em></sup><br/> <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" /></td><td>Object <em>(can be <code>null</code>)</em></td><td>The following data is used internally for various optimizations. It's always synced with source image changes.<br/> This object contains the following fields:<br/> <ul><li><strong><code>averageColors</code></strong> <strong>(String <em>(can be <code>null</code>)</em></strong>)  <img src="https://img.shields.io/badge/Added_0.6.0-gray.svg" alt="Generic badge" />  : <em>Average color codes for each tileset tile (ARGB format)</em></li><li><strong><code>opaqueTiles</code></strong> <strong>(String</strong>)  <img src="https://img.shields.io/badge/Changed_0.6.0-gray.svg" alt="Generic badge" />  : <em>An array of 0/1 bytes, encoded in Base64, that tells if a specific TileID is fully opaque (1) or not (0)</em></li></ul></td></tr>
+<tr><td><code>savedSelections</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>Array of Object</td><td>Array of group of tiles selections, only meant to be used in the editor<br/> This object contains the following fields:<br/> <ul><li><strong><code>ids</code></strong> <strong>(Array of Int</strong>)</li><li><strong><code>mode</code></strong> <strong>(Enum</strong>)</li></ul></td></tr>
+</tbody></table>
+<p><a id="ldtk-EnumDefJson" name="ldtk-EnumDefJson"></a></p>
+<h2 id="enum-definition"><a class="header" href="#enum-definition">Enum definition</a></h2>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>externalRelPath</code></td><td>String <em>(can be <code>null</code>)</em></td><td>Relative path to the external file providing this Enum</td></tr>
+<tr><td><code>iconTilesetUid</code></td><td>Int <em>(can be <code>null</code>)</em></td><td>Tileset UID if provided</td></tr>
+<tr><td><code>identifier</code></td><td>String</td><td>User defined unique identifier</td></tr>
+<tr><td><code>tags</code><br/> <img src="https://img.shields.io/badge/Added_1.0.0-gray.svg" alt="Generic badge" /></td><td>Array of String</td><td>An array of user-defined tags to organize the Enums</td></tr>
+<tr><td><code>uid</code></td><td>Int</td><td>Unique Int identifier</td></tr>
+<tr><td><code>values</code></td><td>Array of <a href="#ldtk-EnumDefValues">Enum value definition</a></td><td>All possible enum values, with their optional Tile infos.</td></tr>
+<tr><td><code>externalFileChecksum</code><br/><sup class="internal"><em>Only used by editor</em></sup></td><td>String <em>(can be <code>null</code>)</em></td><td></td></tr>
+</tbody></table>
+<p><a id="ldtk-EnumDefValues" name="ldtk-EnumDefValues"></a></p>
+<h3 id="enum-value-definition"><a class="header" href="#enum-value-definition">Enum value definition</a></h3>
+<table><thead><tr><th>Value</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>_tileSrcRect</code><br/> <img src="https://img.shields.io/badge/Added_0.4.0-gray.svg" alt="Generic badge" /></td><td>Array of Int <em>(can be <code>null</code>)</em></td><td>An array of 4 Int values that refers to the tile in the tileset image: <code>[ x, y, width, height ]</code></td></tr>
+<tr><td><code>color</code><br/> <img src="https://img.shields.io/badge/Added_0.9.0-gray.svg" alt="Generic badge" /></td><td>Int</td><td>Optional color</td></tr>
+<tr><td><code>id</code></td><td>String</td><td>Enum value</td></tr>
+<tr><td><code>tileId</code></td><td>Int <em>(can be <code>null</code>)</em></td><td>The optional ID of the tile</td></tr>
+</tbody></table>
+
+                    </main>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="csharpHighlight.js"></script>
+        <script type="text/javascript" src="misc.js"></script>
+
+
+    </body>
+</html>
