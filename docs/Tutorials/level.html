@@ -154,6 +154,10 @@ If your level has custom fields you will need to load the data using <code>GetCu
 </code></pre>
 <pre><code class="language-cs">Gun_Pickup level1 = level0.GetEntityRef&lt;Gun_Pickup&gt;();// Guid/Iid
 </code></pre>
+<p>If you have custom fields specified ldtkCodegen should have generated a file named <code>LDtkfileData</code></p>
+<p>To get the fields from the level</p>
+<pre><code class="language-cs">LDtkfileData levelData = levelName.GetCustomFields&lt;LDtkfileData&gt;();
+</code></pre>
 <p>For more information on the level refer to the ldtk documentation <a href="../LDtkReference.html#level">ldtk-LevelJson</a></p>
 
                     </main>

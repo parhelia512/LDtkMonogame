@@ -156,6 +156,9 @@
 <p>Gets an intgrid with the &quot;identifier&quot; in a &quot;LDtkLevel&quot;</p>
 <pre><code class="language-cs">public LDtkIntGrid GetIntGrid(string identifier)
 </code></pre>
+<p>Gets the custom fields of the level</p>
+<pre><code class="language-cs">public T GetCustomFields&lt;T&gt;() where T : new()
+</code></pre>
 <p>Gets one entity of type T in the current level best used with 1 per level constraint</p>
 <pre><code class="language-cs">public T GetEntity&lt;T&gt;() where T : new()
 </code></pre>
@@ -165,7 +168,6 @@
 <p>Gets an array of entities of type &quot;T&quot; in the current level</p>
 <pre><code class="language-cs">public T[] GetEntities&lt;T&gt;() where T : new()
 </code></pre>
-<p>T GetEntityFromInstance<T>(EntityInstance entityInstance) where T : new()</p>
 <p>Check if point is inside of a level</p>
 <pre><code class="language-cs">public bool Contains(Vector2 point)
 </code></pre>
