@@ -144,17 +144,16 @@ Now you can remove it from your project as your game does not actually need the 
 </code></pre>
 <p>We have the dll cached to the harddrive you can now go and locate the dll we will be adding to the content pipeline file.
 It should be located here.</p>
-<pre><code class="language-shell">C:\Users\&lt;USERNAME&gt;\.nuget\packages\ldtkmonogame.contentpipeline\&lt;VERSION&gt;\lib\netcoreapp3.1
+<pre><code class="language-shell">C:\Users\&lt;USERNAME&gt;\.nuget\packages\ldtkmonogame.contentpipeline\&lt;VERSION&gt;\lib\net6.0
 </code></pre>
 <p>Where <code>&lt;USERNAME&gt;</code> is your username on your machine and <code>&lt;VERSION&gt;</code> is the latest version of the contentpipeline nuget package <a href="https://www.nuget.org/packages/LDtkMonogame.ContentPipeline/"><img src="https://buildstats.info/nuget/LDtkMonogame.ContentPipeline" alt="LDtkMonogame.Codegen" /> </a> as of right now.</p>
 <p>Now with that path you can paste it into your content.mgcb here is what i did in mine.</p>
 <pre><code class="language-shell">#-------------------------------- References --------------------------------#
 
-/reference:C:/Users/IrishBruse/.nuget/packages/ldtkmonogame.contentpipeline/0.4.1/lib/netcoreapp3.1/LDtk.ContentPipeline.dll
+/reference:C:/Users/IrishBruse/.nuget/packages/ldtkmonogame.contentpipeline/0.7.0/lib/net6.0/LDtk.ContentPipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 </code></pre>
-<p>All in one line its being wrapped( Thanks docfx &gt;:( ).</p>
 
                     </main>
                 </div>
